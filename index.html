@@ -4,8 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
   <meta http-equiv="refresh" content="300">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>SHMÚ radar e-ink</title>
-
   <style>
     html, body {
       margin: 0;
@@ -14,13 +16,11 @@
       background: #ffffff;
       overflow: hidden;
     }
-
     body {
       display: flex;
       align-items: center;
       justify-content: center;
     }
-
     img {
       width: 100vw;
       height: 100vh;
@@ -30,23 +30,15 @@
     }
   </style>
 </head>
-
 <body>
-  <img id="radar" alt="SHMÚ radar">
-
+  <img id="radar" src="latest_arrow.png?v=0" alt="SHMÚ radar">
   <script>
-    const RADAR_URL =
-      "https://raw.githubusercontent.com/adykub-3dee/shmuradarsk/main/latest_arrow.png";
-
-    function loadLatestRadar() {
-      const img = document.getElementById("radar");
-      img.src = RADAR_URL + "?t=" + Date.now();
+    const radar = document.getElementById("radar");
+    function refreshRadar() {
+      const base = radar.src.split("?")[0];
+      radar.src = base + "?t=" + Date.now();
     }
-
-    loadLatestRadar();
-
-    // Obnov obrázok každých 5 minút aj bez reloadu celej stránky.
-    setInterval(loadLatestRadar, 300000);
+    setInterval(refreshRadar, 300000);
   </script>
 </body>
 </html>
