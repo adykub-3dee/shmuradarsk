@@ -21,7 +21,7 @@ LOOKBACK_HOURS = 4
 FRAME_STEP_MIN = 5
 FRAME_COUNT_FOR_ANALYSIS = 6
 REQUEST_TIMEOUT = 20
-USER_AGENT = "shmu-radar-eink/original-plus-arrow"
+USER_AGENT = "shmu-radar-eink/clean-bg-plus-arrow"
 
 
 def utc_now_rounded() -> datetime:
@@ -61,20 +61,15 @@ def fetch_image(url: str) -> Optional[Image.Image]:
         return None
 
 
-def get_latest_frame() -> Tuple[datetime, bytes, Image.Image, str]:
+def get_latest_frame() -> Tuple[datetime, Image.Image, str]:
     probe = utc_now_rounded()
     attempts = int((LOOKBACK_HOURS * 60) / FRAME_STEP_MIN)
     for i in range(attempts):
         candidate = probe - timedelta(minutes=i * FRAME_STEP_MIN)
         url = make_url(candidate)
-        data = fetch_png_bytes(url)
-        if data is None:
-            continue
-        try:
-            img = Image.open(io.BytesIO(data)).convert("RGB")
-            return candidate, data, img, url
-        except Exception:
-            continue
+        img = fetch_image(url)
+        if img is not None:
+            return candidate, img, url
     raise RuntimeError("Nepodarilo sa nájsť žiadnu radarovú snímku SHMÚ.")
 
 
@@ -85,8 +80,42 @@ def get_history_frames(latest_dt: datetime, count: int) -> List[Tuple[datetime, 
         img = fetch_image(make_url(candidate))
         if img is not None:
             frames.append((candidate, img))
-    frames.reverse()  # oldest -> newest
+    frames.reverse()
     return frames
+
+
+def rgb_to_hsv(rgb: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    arr = rgb.astype(np.float32) / 255.0
+    r, g, b = arr[:, :, 0], arr[:, :, 1], arr[:, :, 2]
+    maxc = np.maximum.reduce([r, g, b])
+    minc = np.minimum.reduce([r, g, b])
+    delta = maxc - minc
+    v = maxc
+    s = np.where(maxc == 0, 0, delta / np.maximum(maxc, 1e-6))
+    h = np.zeros_like(maxc)
+    mask = delta > 1e-6
+    idx = (maxc == r) & mask
+    h[idx] = ((g[idx] - b[idx]) / delta[idx]) % 6.0
+    idx = (maxc == g) & mask
+    h[idx] = ((b[idx] - r[idx]) / delta[idx]) + 2.0
+    idx = (maxc == b) & mask
+    h[idx] = ((r[idx] - g[idx]) / delta[idx]) + 4.0
+    h /= 6.0
+    return h, s, v
+
+
+def clean_background(img: Image.Image) -> Image.Image:
+    rgb = np.array(img.convert("RGB"))
+    _, s, v = rgb_to_hsv(rgb)
+    brightness = rgb.mean(axis=2)
+
+    # Remove only the dull gray background haze.
+    gray_bg = (s < 0.12) & (brightness > 150)
+
+    # Keep dark text, map borders and color legend untouched.
+    out = rgb.copy()
+    out[gray_bg] = [255, 255, 255]
+    return Image.fromarray(out, mode="RGB")
 
 
 def classify_precip_mask(rgb: np.ndarray) -> np.ndarray:
@@ -155,7 +184,7 @@ def direction_label(vx: float, vy: float) -> str:
     return "V"
 
 
-def draw_arrow_on_original(img: Image.Image, motion: Optional[Tuple[float, float, Tuple[float, float]]]) -> Image.Image:
+def draw_arrow(img: Image.Image, motion: Optional[Tuple[float, float, Tuple[float, float]]]) -> Image.Image:
     out = img.copy()
     if motion is None:
         return out
@@ -178,7 +207,6 @@ def draw_arrow_on_original(img: Image.Image, motion: Optional[Tuple[float, float
     ex = min(max(end[0], 20), w - 20)
     ey = min(max(end[1], 20), h - 20)
 
-    # white underlay for visibility, black arrow on top
     draw.line((sx, sy, ex, ey), fill=(255, 255, 255), width=12)
     draw.line((sx, sy, ex, ey), fill=(0, 0, 0), width=7)
 
@@ -204,7 +232,6 @@ def draw_arrow_on_original(img: Image.Image, motion: Optional[Tuple[float, float
     px, py = 10, h - th - 12
     draw.rectangle((px - 4, py - 3, px + tw + 4, py + th + 3), fill=(255, 255, 255), outline=(0, 0, 0))
     draw.text((px, py), label, fill=(0, 0, 0), font=font)
-
     return out
 
 
@@ -213,7 +240,7 @@ def write_info_json(latest_dt: datetime, source_url: str, motion: Optional[Tuple
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "latest_radar_utc": latest_dt.isoformat(),
         "source_url": source_url,
-        "mode": "original_shmu_png_plus_arrow_overlay",
+        "mode": "cleaned_background_plus_arrow",
     }
     if motion is not None:
         vx, vy, _ = motion
@@ -223,11 +250,11 @@ def write_info_json(latest_dt: datetime, source_url: str, motion: Optional[Tuple
 
 
 def main() -> None:
-    latest_dt, latest_bytes, latest_img, source_url = get_latest_frame()
+    latest_dt, latest_img, source_url = get_latest_frame()
     history = get_history_frames(latest_dt, FRAME_COUNT_FOR_ANALYSIS)
 
-    # latest.png = original untouched SHMU PNG bytes
-    LATEST_PNG.write_bytes(latest_bytes)
+    cleaned = clean_background(latest_img)
+    cleaned.save(LATEST_PNG)
 
     masks: List[np.ndarray] = []
     for _, frame in history:
@@ -236,11 +263,11 @@ def main() -> None:
         masks = [classify_precip_mask(np.array(latest_img.convert("RGB")))]
 
     motion = compute_motion_vector(masks)
-    latest_with_arrow = draw_arrow_on_original(latest_img, motion)
-    latest_with_arrow.save(LATEST_ARROW_PNG)
+    with_arrow = draw_arrow(cleaned, motion)
+    with_arrow.save(LATEST_ARROW_PNG)
 
     write_info_json(latest_dt, source_url, motion)
-    print(f"Updated original radar from {source_url}")
+    print(f"Updated cleaned radar from {source_url}")
 
 
 if __name__ == "__main__":
