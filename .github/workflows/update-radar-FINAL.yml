@@ -1,0 +1,75 @@
+name: Update SHMU radar for e-ink
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/update_radar.py"
+      - "base_map.png"
+      - "requirements.txt"
+      - ".github/workflows/update-radar.yml"
+
+  schedule:
+    # Every 5 minutes, offset from the busiest exact :00/:05 slots.
+    - cron: "2,7,12,17,22,27,32,37,42,47,52,57 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: shmu-radar-update
+  cancel-in-progress: false
+
+jobs:
+  update-radar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Sync latest main
+        run: |
+          git pull --rebase origin main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Generate latest radar images
+        run: |
+          python scripts/update_radar.py
+
+      - name: Verify generated files
+        run: |
+          test -f latest.png
+          test -f latest_arrow.png
+          test -f latest_info.json
+          test -f index.html
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add latest.png latest_arrow.png latest_info.json index.html
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update SHMU radar"
+            git push origin HEAD:main
+          fi
