@@ -6,32 +6,33 @@ import math
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Optional, Tuple
+from zoneinfo import ZoneInfo
 
 import numpy as np
 import requests
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-ROOT = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT / "data"
-DATA_DIR.mkdir(exist_ok=True)
-
+ROOT = Path(__file__).resolve().parents[1] if Path(__file__).resolve().parent.name == 'scripts' else Path.cwd()
 LATEST_PNG = ROOT / "latest.png"
 LATEST_ARROW_PNG = ROOT / "latest_arrow.png"
-INDEX_HTML = ROOT / "index.html"
 INFO_JSON = ROOT / "latest_info.json"
 
 BASE_URL = "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-{stamp}-mosaic--.png"
 LOOKBACK_HOURS = 4
 FRAME_STEP_MIN = 5
-FRAME_COUNT_FOR_ANALYSIS = 6  # ~25 minutes of motion
+FRAME_COUNT_FOR_ANALYSIS = 8      # ~35 minút
 REQUEST_TIMEOUT = 20
-USER_AGENT = "shmu-radar-eink/1.0 (+https://github.com/)"
+USER_AGENT = "shmu-radar-eink/2.0 (+https://github.com/)"
+LOCAL_TZ = ZoneInfo("Europe/Bratislava")
+
+RED = (220, 0, 0)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
 
 
 def utc_now_rounded() -> datetime:
     now = datetime.now(timezone.utc).replace(second=0, microsecond=0)
-    rounded = (now.minute // FRAME_STEP_MIN) * FRAME_STEP_MIN
-    return now.replace(minute=rounded)
+    return now.replace(minute=(now.minute // FRAME_STEP_MIN) * FRAME_STEP_MIN)
 
 
 def make_stamp(dt: datetime) -> str:
@@ -43,14 +44,12 @@ def make_url(dt: datetime) -> str:
 
 
 def fetch_image(url: str) -> Optional[Image.Image]:
-    headers = {"User-Agent": USER_AGENT}
     try:
-        response = requests.get(url, timeout=REQUEST_TIMEOUT, headers=headers)
-        if response.status_code != 200:
+        r = requests.get(url, timeout=REQUEST_TIMEOUT, headers={"User-Agent": USER_AGENT})
+        if r.status_code != 200:
             return None
-        response.raise_for_status()
-        image = Image.open(io.BytesIO(response.content)).convert("RGB")
-        return image
+        r.raise_for_status()
+        return Image.open(io.BytesIO(r.content)).convert("RGB")
     except Exception:
         return None
 
@@ -59,277 +58,319 @@ def get_latest_frame() -> Tuple[datetime, Image.Image, str]:
     probe = utc_now_rounded()
     attempts = int((LOOKBACK_HOURS * 60) / FRAME_STEP_MIN)
     for i in range(attempts):
-        candidate = probe - timedelta(minutes=i * FRAME_STEP_MIN)
-        url = make_url(candidate)
+        dt = probe - timedelta(minutes=i * FRAME_STEP_MIN)
+        url = make_url(dt)
         image = fetch_image(url)
         if image is not None:
-            return candidate, image, url
+            return dt, image, url
     raise RuntimeError("Nepodarilo sa nájsť žiadnu radarovú snímku SHMÚ.")
 
 
 def get_history_frames(latest_dt: datetime, count: int) -> List[Tuple[datetime, Image.Image]]:
     frames: List[Tuple[datetime, Image.Image]] = []
     for i in range(count):
-        candidate = latest_dt - timedelta(minutes=i * FRAME_STEP_MIN)
-        image = fetch_image(make_url(candidate))
+        dt = latest_dt - timedelta(minutes=i * FRAME_STEP_MIN)
+        image = fetch_image(make_url(dt))
         if image is not None:
-            frames.append((candidate, image))
-    frames.reverse()  # oldest -> newest
+            frames.append((dt, image))
+    frames.reverse()
     return frames
 
 
-def classify_red_mask(rgb: np.ndarray) -> np.ndarray:
-    arr = rgb.astype(np.int16)
-    r = arr[:, :, 0]
-    g = arr[:, :, 1]
-    b = arr[:, :, 2]
-    maxc = arr.max(axis=2)
-    minc = arr.min(axis=2)
-    delta = maxc - minc
-    brightness = arr.mean(axis=2)
-
-    near_white = (brightness > 245) & (delta < 18)
-    strong_color = (delta > 35) & (maxc > 70) & (~near_white)
-
-    # Keep all saturated radar colors as rain echoes.
-    return strong_color
+def _dilate(mask: np.ndarray, size: int = 5) -> np.ndarray:
+    img = Image.fromarray((mask.astype(np.uint8) * 255), mode="L")
+    img = img.filter(ImageFilter.MaxFilter(size))
+    return np.array(img) > 0
 
 
-def convert_to_eink(image: Image.Image) -> Tuple[Image.Image, np.ndarray]:
-    rgb = np.array(image.convert("RGB"))
-    red_mask = classify_red_mask(rgb)
+def build_eink_frame(frames: List[Image.Image]) -> Tuple[Image.Image, np.ndarray]:
+    """
+    Vytvorí 3-farebný e-ink obraz:
+      - biela: pozadie
+      - čierna: statické kontúry mapy
+      - červená: dynamické radarové echo
 
-    arr = rgb.astype(np.int16)
-    brightness = arr.mean(axis=2)
-    maxc = arr.max(axis=2)
-    minc = arr.min(axis=2)
-    delta = maxc - minc
+    Základný trik: hranice/mapa sú medzi snímkami statické, radarové echo sa mení.
+    Tým sa statické farebné hranice už nepomýlia so zrážkami.
+    """
+    if not frames:
+        raise ValueError("Chýbajú radarové snímky")
 
-    near_white = (brightness > 245) & (delta < 18)
-    black_mask = (~near_white) & (~red_mask)
+    stack = np.stack([np.asarray(im.convert("RGB"), dtype=np.int16) for im in frames], axis=0)
+    current = stack[-1]
+    baseline = np.median(stack, axis=0).astype(np.int16)
 
-    out = np.full((rgb.shape[0], rgb.shape[1], 3), 255, dtype=np.uint8)
-    out[black_mask] = [0, 0, 0]
-    out[red_mask] = [220, 0, 0]
+    # Ako veľmi sa daný pixel počas časového okna menil.
+    temporal_range = stack.max(axis=0) - stack.min(axis=0)
+    temporal_activity = temporal_range.max(axis=2)
 
-    return Image.fromarray(out, mode="RGB"), red_mask
+    # Farebnosť aktuálneho pixela. Radarová škála je farebná, mapa väčšinou statická.
+    cur_max = current.max(axis=2)
+    cur_min = current.min(axis=2)
+    saturation = cur_max - cur_min
+
+    # Rozdiel aktuálnej snímky od časového mediánu.
+    delta_now = np.abs(current - baseline).max(axis=2)
+
+    # Dynamické farebné jadrá radarového echa.
+    dynamic_seed = (
+        (saturation >= 28)
+        & (cur_max >= 75)
+        & ((temporal_activity >= 22) | (delta_now >= 18))
+    )
+
+    # Rozšírenie jadra zachytí aj svetlejšie okraje zrážok, ale stále iba v okolí dynamiky.
+    nearby_dynamic = _dilate(dynamic_seed, 5)
+    colored_candidate = (saturation >= 18) & (cur_max >= 65)
+    precip_mask = dynamic_seed | (nearby_dynamic & colored_candidate)
+
+    # Statická mapa: medián viacerých snímok + detekcia hrán, nie plošné stmavenie.
+    static_consistency = temporal_activity <= 12
+    base_rgb = np.clip(baseline, 0, 255).astype(np.uint8)
+    gray = Image.fromarray(base_rgb, mode="RGB").convert("L")
+    edges = np.array(gray.filter(ImageFilter.FIND_EDGES), dtype=np.uint8)
+
+    # Silnejšie statické hrany = kontúry. Jemne ich zosilníme pre e-ink.
+    contour_seed = (edges >= 30) & static_consistency
+    contour_mask = _dilate(contour_seed, 3)
+
+    # Nech radar vždy vyhrá nad čiernou mapou.
+    contour_mask &= ~_dilate(precip_mask, 3)
+
+    out = np.full((current.shape[0], current.shape[1], 3), 255, dtype=np.uint8)
+    out[contour_mask] = BLACK
+    out[precip_mask] = RED
+
+    # Odstránenie rámika, ktorý FIND_EDGES zvykne vytvoriť na okrajoch.
+    out[:2, :, :] = WHITE
+    out[-2:, :, :] = WHITE
+    out[:, :2, :] = WHITE
+    out[:, -2:, :] = WHITE
+
+    return Image.fromarray(out, mode="RGB"), precip_mask
 
 
-def mask_centroid(mask: np.ndarray) -> Optional[Tuple[float, float]]:
-    ys, xs = np.nonzero(mask)
-    if len(xs) < 150:
+def _downsample_mask(mask: np.ndarray, factor: int = 4) -> np.ndarray:
+    h, w = mask.shape
+    nh, nw = max(1, h // factor), max(1, w // factor)
+    im = Image.fromarray((mask.astype(np.uint8) * 255), mode="L")
+    im = im.resize((nw, nh), Image.Resampling.NEAREST)
+    return np.array(im) > 0
+
+
+def _shift_overlap(a: np.ndarray, b: np.ndarray, dx: int, dy: int) -> float:
+    h, w = a.shape
+    if abs(dx) >= w or abs(dy) >= h:
+        return 0.0
+
+    ax0 = max(0, -dx); ax1 = min(w, w - dx)
+    ay0 = max(0, -dy); ay1 = min(h, h - dy)
+    bx0 = max(0, dx);  bx1 = min(w, w + dx)
+    by0 = max(0, dy);  by1 = min(h, h + dy)
+
+    aa = a[ay0:ay1, ax0:ax1]
+    bb = b[by0:by1, bx0:bx1]
+    if aa.size == 0 or bb.size == 0:
+        return 0.0
+    na = int(aa.sum()); nb = int(bb.sum())
+    if na < 8 or nb < 8:
+        return 0.0
+    inter = int(np.logical_and(aa, bb).sum())
+    return inter / math.sqrt(na * nb)
+
+
+def estimate_motion(masks: List[np.ndarray]) -> Optional[Tuple[float, float, Tuple[float, float], float]]:
+    """Odhad dominantného posunu zrážok pomocou korelácie binárnych masiek."""
+    valid = [m for m in masks if int(m.sum()) >= 80]
+    if len(valid) < 2:
         return None
-    return float(xs.mean()), float(ys.mean())
 
+    factor = 4
+    small = [_downsample_mask(m, factor) for m in valid]
+    vectors = []
 
-def compute_motion_vector(masks: List[np.ndarray]) -> Optional[Tuple[float, float, Tuple[float, float]]]:
-    points: List[Tuple[int, float, float]] = []
-    for idx, mask in enumerate(masks):
-        centroid = mask_centroid(mask)
-        if centroid is not None:
-            points.append((idx, centroid[0], centroid[1]))
+    for prev, curr in zip(small[:-1], small[1:]):
+        best = (0.0, 0, 0)
+        # ±8 px v zmenšenej mape = ±32 px v origináli za 5 min.
+        for dy in range(-8, 9):
+            for dx in range(-8, 9):
+                score = _shift_overlap(prev, curr, dx, dy)
+                if score > best[0]:
+                    best = (score, dx, dy)
+        score, dx, dy = best
+        if score >= 0.12:
+            vectors.append((dx * factor, dy * factor, score))
 
-    if len(points) < 2:
+    if not vectors:
         return None
 
-    # Use simple linear regression over time for robustness.
-    t = np.array([p[0] for p in points], dtype=np.float64)
-    xs = np.array([p[1] for p in points], dtype=np.float64)
-    ys = np.array([p[2] for p in points], dtype=np.float64)
+    weights = np.array([v[2] for v in vectors], dtype=float)
+    vx = float(np.average([v[0] for v in vectors], weights=weights))
+    vy = float(np.average([v[1] for v in vectors], weights=weights))
+    confidence = float(np.clip(weights.mean(), 0.0, 1.0))
 
-    t_mean = t.mean()
-    denom = ((t - t_mean) ** 2).sum()
-    if denom == 0:
+    if math.hypot(vx, vy) < 2.5:
         return None
 
-    vx = ((t - t_mean) * (xs - xs.mean())).sum() / denom
-    vy = ((t - t_mean) * (ys - ys.mean())).sum() / denom
-
-    current_center = (points[-1][1], points[-1][2])
-    magnitude = math.hypot(vx, vy)
-    if magnitude < 2.0:
+    ys, xs = np.nonzero(valid[-1])
+    if len(xs) == 0:
         return None
-
-    return vx, vy, current_center
+    center = (float(xs.mean()), float(ys.mean()))
+    return vx, vy, center, confidence
 
 
 def direction_label(vx: float, vy: float) -> str:
-    # Screen coordinates: +x right, +y down.
-    angle = math.degrees(math.atan2(vy, vx))
-    dirs = [
-        (22.5, "V"),
-        (67.5, "JV"),
-        (112.5, "J"),
-        (157.5, "JZ"),
-        (202.5, "Z"),
-        (247.5, "SZ"),
-        (292.5, "S"),
-        (337.5, "SV"),
-        (360.0, "V"),
+    # obrazové súradnice: +x vpravo, +y dole
+    angle = (math.degrees(math.atan2(vy, vx)) + 360) % 360
+    labels = ["V", "JV", "J", "JZ", "Z", "SZ", "S", "SV"]
+    idx = int((angle + 22.5) // 45) % 8
+    return labels[idx]
+
+
+def _font(size: int, bold: bool = False):
+    candidates = [
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        "/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/dejavu/DejaVuSans.ttf",
     ]
-    angle = (angle + 360.0) % 360.0
-    for limit, label in dirs:
-        if angle < limit:
-            return label
-    return "V"
+    for p in candidates:
+        try:
+            return ImageFont.truetype(p, size=size)
+        except Exception:
+            pass
+    return ImageFont.load_default()
 
 
-def draw_arrow(img: Image.Image, motion: Optional[Tuple[float, float, Tuple[float, float]]]) -> Image.Image:
+def draw_arrow_and_info(
+    img: Image.Image,
+    motion: Optional[Tuple[float, float, Tuple[float, float], float]],
+    radar_dt_utc: datetime,
+) -> Image.Image:
     out = img.copy()
     draw = ImageDraw.Draw(out)
     w, h = out.size
 
+    # Lokálny čas radarovej snímky - používateľ nemusí riešiť UTC v zdroji SHMÚ.
+    local_dt = radar_dt_utc.astimezone(LOCAL_TZ)
+    time_text = f"Radar {local_dt:%H:%M}"
+    small_font = _font(16, bold=True)
+
+    tb = draw.textbbox((0, 0), time_text, font=small_font)
+    tw, th = tb[2] - tb[0], tb[3] - tb[1]
+    draw.rectangle((8, 8, 18 + tw, 16 + th), fill=WHITE)
+    draw.text((13, 11), time_text, fill=BLACK, font=small_font)
+
     if motion is None:
         return out
 
-    vx, vy, center = motion
-    cx, cy = center
+    vx, vy, center, confidence = motion
     mag = math.hypot(vx, vy)
-    if mag == 0:
-        return out
-
     ux, uy = vx / mag, vy / mag
-    arrow_len = min(120, max(70, int(mag * 18)))
-    start = (cx - ux * 20, cy - uy * 20)
-    end = (cx + ux * arrow_len, cy + uy * arrow_len)
 
-    # Keep the arrow inside image bounds.
-    sx = min(max(start[0], 20), w - 20)
-    sy = min(max(start[1], 20), h - 20)
-    ex = min(max(end[0], 20), w - 20)
-    ey = min(max(end[1], 20), h - 20)
+    # Dlhá, ľahko čitateľná čierna šípka.
+    arrow_len = min(135, max(85, int(mag * 5.5)))
+    cx, cy = center
+    sx = cx - ux * 25
+    sy = cy - uy * 25
+    ex = cx + ux * arrow_len
+    ey = cy + uy * arrow_len
 
-    # White underlay for readability on red/black areas.
-    draw.line((sx, sy, ex, ey), fill=(255, 255, 255), width=12)
-    draw.line((sx, sy, ex, ey), fill=(0, 0, 0), width=7)
+    # Posun celej šípky dovnútra plátna.
+    margin = 28
+    dx_fix = 0.0; dy_fix = 0.0
+    if min(sx, ex) < margin: dx_fix += margin - min(sx, ex)
+    if max(sx, ex) > w - margin: dx_fix -= max(sx, ex) - (w - margin)
+    if min(sy, ey) < margin: dy_fix += margin - min(sy, ey)
+    if max(sy, ey) > h - margin: dy_fix -= max(sy, ey) - (h - margin)
+    sx += dx_fix; ex += dx_fix; sy += dy_fix; ey += dy_fix
 
-    head_len = 18
-    head_w = 10
-    angle = math.atan2(ey - sy, ex - sx)
-    left = (
-        ex - head_len * math.cos(angle) + head_w * math.sin(angle),
-        ey - head_len * math.sin(angle) - head_w * math.cos(angle),
-    )
-    right = (
-        ex - head_len * math.cos(angle) - head_w * math.sin(angle),
-        ey - head_len * math.sin(angle) + head_w * math.cos(angle),
-    )
+    # Biela podkladová čiara + čierna šípka.
+    draw.line((sx, sy, ex, ey), fill=WHITE, width=15)
+    draw.line((sx, sy, ex, ey), fill=BLACK, width=8)
 
-    draw.polygon([(ex, ey), left, right], fill=(255, 255, 255))
-    draw.polygon([(ex, ey), left, right], outline=(0, 0, 0))
+    ang = math.atan2(ey - sy, ex - sx)
+    head_len, head_half = 23, 13
+    left = (ex - head_len * math.cos(ang) + head_half * math.sin(ang),
+            ey - head_len * math.sin(ang) - head_half * math.cos(ang))
+    right = (ex - head_len * math.cos(ang) - head_half * math.sin(ang),
+             ey - head_len * math.sin(ang) + head_half * math.cos(ang))
+    draw.polygon([(ex, ey), left, right], fill=WHITE)
+    # mierne väčšia biela hlava a potom čierna vnútorná hlava
+    inner_len, inner_half = 20, 10
+    ileft = (ex - inner_len * math.cos(ang) + inner_half * math.sin(ang),
+             ey - inner_len * math.sin(ang) - inner_half * math.cos(ang))
+    iright = (ex - inner_len * math.cos(ang) - inner_half * math.sin(ang),
+              ey - inner_len * math.sin(ang) + inner_half * math.cos(ang))
+    draw.polygon([(ex, ey), ileft, iright], fill=BLACK)
 
-    # Small legend box.
-    label = f"Smer zrážok: {direction_label(vx, vy)}"
-    font = ImageFont.load_default()
-    bbox = draw.textbbox((0, 0), label, font=font)
-    tw = bbox[2] - bbox[0]
-    th = bbox[3] - bbox[1]
-    px, py = 10, h - th - 12
-    draw.rectangle((px - 4, py - 3, px + tw + 4, py + th + 3), fill=(255, 255, 255), outline=(0, 0, 0))
-    draw.text((px, py), label, fill=(0, 0, 0), font=font)
+    label = f"SMER ZRAZOK: {direction_label(vx, vy)}"
+    font = _font(17, bold=True)
+    bb = draw.textbbox((0, 0), label, font=font)
+    lw, lh = bb[2] - bb[0], bb[3] - bb[1]
+    x, y = 10, h - lh - 16
+    draw.rectangle((x - 4, y - 4, x + lw + 6, y + lh + 5), fill=WHITE, outline=BLACK, width=2)
+    draw.text((x, y), label, fill=BLACK, font=font)
 
     return out
 
 
-def write_index_html(ts_token: str) -> None:
-    html = f"""<!doctype html>
-<html lang=\"sk\">
-<head>
-  <meta charset=\"utf-8\">
-  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no\">
-  <meta http-equiv=\"refresh\" content=\"300\">
-  <title>SHMÚ radar e-ink</title>
-  <style>
-    html, body {{
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      background: #ffffff;
-      overflow: hidden;
-    }}
-    body {{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }}
-    img {{
-      width: 100vw;
-      height: 100vh;
-      object-fit: contain;
-      display: block;
-      background: #ffffff;
-    }}
-  </style>
-</head>
-<body>
-  <img src=\"latest_arrow.png?v={ts_token}\" alt=\"SHMÚ radar\">
-</body>
-</html>
-"""
-    INDEX_HTML.write_text(html, encoding="utf-8")
-
-
-def write_info_json(latest_dt: datetime, source_url: str, motion: Optional[Tuple[float, float, Tuple[float, float]]]) -> None:
+def write_info_json(latest_dt: datetime, source_url: str, motion) -> None:
     payload = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "latest_radar_utc": latest_dt.isoformat(),
+        "latest_radar_local": latest_dt.astimezone(LOCAL_TZ).isoformat(),
         "source_url": source_url,
     }
     if motion is not None:
-        vx, vy, _ = motion
+        vx, vy, _, confidence = motion
         payload["movement_direction"] = direction_label(vx, vy)
         payload["movement_vector"] = {"vx": round(vx, 2), "vy": round(vy, 2)}
+        payload["movement_confidence"] = round(confidence, 3)
     INFO_JSON.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def make_placeholder() -> None:
-    if LATEST_PNG.exists() and LATEST_ARROW_PNG.exists() and INDEX_HTML.exists():
-        return
-    img = Image.new("RGB", (600, 480), "white")
-    draw = ImageDraw.Draw(img)
-    font = ImageFont.load_default()
-    lines = [
-        "SHMÚ radar e-ink",
-        "Čaká na prvé spustenie GitHub Action",
-    ]
-    y = 210
-    for line in lines:
-        bbox = draw.textbbox((0, 0), line, font=font)
-        tw = bbox[2] - bbox[0]
-        draw.text(((600 - tw) / 2, y), line, fill="black", font=font)
-        y += 18
-    img.save(LATEST_PNG)
-    img.save(LATEST_ARROW_PNG)
-    write_index_html("init")
-
-
 def main() -> None:
-    make_placeholder()
     latest_dt, latest_raw, source_url = get_latest_frame()
     history = get_history_frames(latest_dt, FRAME_COUNT_FOR_ANALYSIS)
 
-    latest_eink, latest_mask = convert_to_eink(latest_raw)
-    history_masks: List[np.ndarray] = []
-    for _, frame in history:
-        _, mask = convert_to_eink(frame)
-        history_masks.append(mask)
+    # Ak niektoré staršie snímky chýbajú, stále musí byť zahrnutá aktuálna.
+    frames = [im for _, im in history]
+    if not frames or history[-1][0] != latest_dt:
+        frames.append(latest_raw)
 
-    if not history_masks:
-        history_masks = [latest_mask]
+    eink, precip_current = build_eink_frame(frames)
 
-    motion = compute_motion_vector(history_masks)
-    latest_arrow = draw_arrow(latest_eink, motion)
+    precip_masks: List[np.ndarray] = []
+    # Pre smer vytvoríme masku každej snímky voči rovnakému časovému oknu.
+    # Posuvné okná nie sú potrebné; dynamická mapa je vo všetkých maskách konzistentná.
+    if len(frames) >= 2:
+        stack = np.stack([np.asarray(im.convert("RGB"), dtype=np.int16) for im in frames], axis=0)
+        baseline = np.median(stack, axis=0).astype(np.int16)
+        temporal_range = stack.max(axis=0) - stack.min(axis=0)
+        temporal_activity = temporal_range.max(axis=2)
+        for arr in stack:
+            cur_max = arr.max(axis=2); cur_min = arr.min(axis=2)
+            saturation = cur_max - cur_min
+            delta = np.abs(arr - baseline).max(axis=2)
+            seed = (saturation >= 28) & (cur_max >= 75) & ((temporal_activity >= 22) | (delta >= 18))
+            near = _dilate(seed, 5)
+            colored = (saturation >= 18) & (cur_max >= 65)
+            precip_masks.append(seed | (near & colored))
+    else:
+        precip_masks = [precip_current]
 
-    latest_eink.save(LATEST_PNG)
-    latest_arrow.save(LATEST_ARROW_PNG)
+    motion = estimate_motion(precip_masks)
+    final = draw_arrow_and_info(eink, motion, latest_dt)
 
-    ts_token = latest_dt.strftime("%Y%m%d%H%M")
-    write_index_html(ts_token)
+    eink.save(LATEST_PNG)
+    final.save(LATEST_ARROW_PNG)
     write_info_json(latest_dt, source_url, motion)
 
     print(f"Updated radar from {source_url}")
-    print(f"Saved: {LATEST_PNG}")
-    print(f"Saved: {LATEST_ARROW_PNG}")
+    print(f"Local radar time: {latest_dt.astimezone(LOCAL_TZ):%Y-%m-%d %H:%M}")
+    if motion:
+        print(f"Direction: {direction_label(motion[0], motion[1])}, confidence={motion[3]:.2f}")
+    else:
+        print("Direction: not determined")
 
 
 if __name__ == "__main__":
