@@ -3,13 +3,14 @@ from __future__ import annotations
 import io
 import json
 import math
+from collections import deque
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Optional, Tuple
 
 import numpy as np
 import requests
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 LATEST_PNG = ROOT / "latest.png"
@@ -21,7 +22,8 @@ FRAME_STEP_MIN = 5
 LOOKBACK_HOURS = 4
 FRAME_COUNT_FOR_ANALYSIS = 6
 REQUEST_TIMEOUT = 20
-USER_AGENT = "shmu-radar-eink/1.2"
+USER_AGENT = "shmu-radar-eink/1.3"
+LOCAL_TZ = timezone(timedelta(hours=2))
 
 
 def utc_now_rounded() -> datetime:
@@ -29,12 +31,8 @@ def utc_now_rounded() -> datetime:
     return now.replace(minute=(now.minute // FRAME_STEP_MIN) * FRAME_STEP_MIN)
 
 
-def make_stamp(dt: datetime) -> str:
-    return dt.strftime("%Y%m%d-%H%M")
-
-
 def make_url(dt: datetime) -> str:
-    return BASE_URL.format(stamp=make_stamp(dt))
+    return BASE_URL.format(stamp=dt.strftime("%Y%m%d-%H%M"))
 
 
 def fetch_image(url: str) -> Optional[Image.Image]:
@@ -70,39 +68,112 @@ def get_history_frames(latest_dt: datetime, count: int) -> List[Tuple[datetime, 
     return frames
 
 
-def classify_masks(rgb: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
-    arr = rgb.astype(np.int16)
-    r = arr[:, :, 0]
-    g = arr[:, :, 1]
-    b = arr[:, :, 2]
-    maxc = arr.max(axis=2)
-    minc = arr.min(axis=2)
+def rgb_to_hsv_arrays(rgb: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    arr = rgb.astype(np.float32) / 255.0
+    r, g, b = arr[:, :, 0], arr[:, :, 1], arr[:, :, 2]
+    maxc = np.maximum(np.maximum(r, g), b)
+    minc = np.minimum(np.minimum(r, g), b)
     delta = maxc - minc
-    brightness = arr.mean(axis=2)
+    v = maxc
+    s = np.where(maxc == 0, 0, delta / np.maximum(maxc, 1e-6))
+    h = np.zeros_like(maxc)
+    mask = delta > 1e-6
+    idx = (maxc == r) & mask
+    h[idx] = ((g[idx] - b[idx]) / delta[idx]) % 6.0
+    idx = (maxc == g) & mask
+    h[idx] = ((b[idx] - r[idx]) / delta[idx]) + 2.0
+    idx = (maxc == b) & mask
+    h[idx] = ((r[idx] - g[idx]) / delta[idx]) + 4.0
+    h = h / 6.0
+    return h, s, v
 
-    near_white = (brightness > 245) & (delta < 18)
 
-    # Candidate colored pixels from original radar image.
-    colored = (delta > 30) & (maxc > 70) & (~near_white)
+def connected_components(mask: np.ndarray) -> List[np.ndarray]:
+    h, w = mask.shape
+    visited = np.zeros((h, w), dtype=bool)
+    comps: List[np.ndarray] = []
+    for y in range(h):
+        for x in range(w):
+            if not mask[y, x] or visited[y, x]:
+                continue
+            q = deque([(y, x)])
+            visited[y, x] = True
+            coords = []
+            while q:
+                cy, cx = q.popleft()
+                coords.append((cy, cx))
+                for ny, nx in ((cy-1, cx), (cy+1, cx), (cy, cx-1), (cy, cx+1)):
+                    if 0 <= ny < h and 0 <= nx < w and mask[ny, nx] and not visited[ny, nx]:
+                        visited[ny, nx] = True
+                        q.append((ny, nx))
+            comp = np.zeros((h, w), dtype=bool)
+            ys, xs = zip(*coords)
+            comp[np.array(ys), np.array(xs)] = True
+            comps.append(comp)
+    return comps
 
-    # Separate thin colored map lines from filled precipitation blobs.
-    mask_img = Image.fromarray(np.where(colored, 255, 0).astype(np.uint8), mode="L")
-    density = np.array(mask_img.filter(ImageFilter.BoxBlur(3)), dtype=np.uint8)
-    precip_mask = colored & (density >= 85)
-    colored_line_mask = colored & (~precip_mask)
 
-    # Only dark or line-like pixels should become black.
-    dark_mask = (~near_white) & (brightness < 165) & (delta < 90)
-    black_mask = dark_mask | colored_line_mask
+def split_precip_vs_lines(rgb: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+    h, s, v = rgb_to_hsv_arrays(rgb)
+    r = rgb[:, :, 0].astype(np.int16)
+    g = rgb[:, :, 1].astype(np.int16)
+    b = rgb[:, :, 2].astype(np.int16)
+    brightness = rgb.mean(axis=2)
+    delta = np.maximum.reduce([r, g, b]) - np.minimum.reduce([r, g, b])
 
-    # Prevent overlaps.
-    black_mask = black_mask & (~precip_mask)
-    return black_mask, precip_mask
+    near_white = (brightness > 242) & (delta < 20)
+
+    # Colored pixels from radar palette or map colored outlines.
+    colored = (~near_white) & (s > 0.28) & (v > 0.25)
+
+    precip_mask = np.zeros(colored.shape, dtype=bool)
+    line_mask = np.zeros(colored.shape, dtype=bool)
+
+    for comp in connected_components(colored):
+        ys, xs = np.nonzero(comp)
+        area = len(xs)
+        if area == 0:
+            continue
+        minx, maxx = xs.min(), xs.max()
+        miny, maxy = ys.min(), ys.max()
+        bw = maxx - minx + 1
+        bh = maxy - miny + 1
+        fill = area / float(bw * bh)
+
+        # Filled or larger components are precipitation. Thin / sparse components become black lines.
+        is_precip = (
+            area >= 80 and (
+                fill >= 0.18 or
+                (bw >= 14 and bh >= 6) or
+                (bh >= 14 and bw >= 6) or
+                area >= 180
+            )
+        )
+        if is_precip:
+            precip_mask |= comp
+        else:
+            line_mask |= comp
+
+    return precip_mask, line_mask
 
 
 def convert_to_eink(image: Image.Image) -> Tuple[Image.Image, np.ndarray]:
     rgb = np.array(image.convert("RGB"))
-    black_mask, precip_mask = classify_masks(rgb)
+    precip_mask, colored_line_mask = split_precip_vs_lines(rgb)
+
+    brightness = rgb.mean(axis=2)
+    maxc = rgb.max(axis=2)
+    minc = rgb.min(axis=2)
+    delta = maxc.astype(np.int16) - minc.astype(np.int16)
+    _, s, v = rgb_to_hsv_arrays(rgb)
+
+    near_white = (brightness > 242) & (delta < 20)
+
+    # Keep genuinely dark text/lines black. Avoid turning mid-tone background into black.
+    dark_neutral = (~near_white) & (brightness < 145) & (s < 0.30)
+    dark_colored = (~near_white) & (brightness < 120) & (s >= 0.30) & (~precip_mask)
+    black_mask = dark_neutral | dark_colored | colored_line_mask
+    black_mask &= ~precip_mask
 
     out = np.full((rgb.shape[0], rgb.shape[1], 3), 255, dtype=np.uint8)
     out[black_mask] = [0, 0, 0]
@@ -120,10 +191,9 @@ def mask_centroid(mask: np.ndarray) -> Optional[Tuple[float, float]]:
 def compute_motion_vector(masks: List[np.ndarray]) -> Optional[Tuple[float, float, Tuple[float, float]]]:
     points: List[Tuple[int, float, float]] = []
     for idx, mask in enumerate(masks):
-        centroid = mask_centroid(mask)
-        if centroid is not None:
-            points.append((idx, centroid[0], centroid[1]))
-
+        c = mask_centroid(mask)
+        if c is not None:
+            points.append((idx, c[0], c[1]))
     if len(points) < 2:
         return None
 
@@ -140,7 +210,6 @@ def compute_motion_vector(masks: List[np.ndarray]) -> Optional[Tuple[float, floa
     mag = math.hypot(vx, vy)
     if mag < 2.0:
         return None
-
     return vx, vy, (points[-1][1], points[-1][2])
 
 
@@ -170,43 +239,32 @@ def draw_arrow(img: Image.Image, motion: Optional[Tuple[float, float, Tuple[floa
     font = ImageFont.load_default()
 
     if motion is not None:
-        vx, vy, center = motion
-        cx, cy = center
+        vx, vy, (cx, cy) = motion
         mag = math.hypot(vx, vy)
         if mag > 0:
             ux, uy = vx / mag, vy / mag
             arrow_len = min(120, max(70, int(mag * 18)))
-            start = (cx - ux * 20, cy - uy * 20)
-            end = (cx + ux * arrow_len, cy + uy * arrow_len)
-            sx = min(max(start[0], 20), w - 20)
-            sy = min(max(start[1], 20), h - 20)
-            ex = min(max(end[0], 20), w - 20)
-            ey = min(max(end[1], 20), h - 20)
-
+            sx, sy = cx - ux * 20, cy - uy * 20
+            ex, ey = cx + ux * arrow_len, cy + uy * arrow_len
+            sx, sy = min(max(sx, 20), w - 20), min(max(sy, 20), h - 20)
+            ex, ey = min(max(ex, 20), w - 20), min(max(ey, 20), h - 20)
             draw.line((sx, sy, ex, ey), fill=(255, 255, 255), width=12)
             draw.line((sx, sy, ex, ey), fill=(0, 0, 0), width=7)
-
-            head_len = 18
-            head_w = 10
             angle = math.atan2(ey - sy, ex - sx)
-            left = (
-                ex - head_len * math.cos(angle) + head_w * math.sin(angle),
-                ey - head_len * math.sin(angle) - head_w * math.cos(angle),
-            )
-            right = (
-                ex - head_len * math.cos(angle) - head_w * math.sin(angle),
-                ey - head_len * math.sin(angle) + head_w * math.cos(angle),
-            )
+            head_len, head_w = 18, 10
+            left = (ex - head_len * math.cos(angle) + head_w * math.sin(angle),
+                    ey - head_len * math.sin(angle) - head_w * math.cos(angle))
+            right = (ex - head_len * math.cos(angle) - head_w * math.sin(angle),
+                     ey - head_len * math.sin(angle) + head_w * math.cos(angle))
             draw.polygon([(ex, ey), left, right], fill=(255, 255, 255))
             draw.polygon([(ex, ey), left, right], outline=(0, 0, 0))
 
-    local_dt = latest_dt.astimezone(timezone(timedelta(hours=2)))
+    local_dt = latest_dt.astimezone(LOCAL_TZ)
     label = f"Radar {local_dt.strftime('%H:%M')}"
     if motion is not None:
         label += f"  Smer: {direction_label(motion[0], motion[1])}"
     bbox = draw.textbbox((0, 0), label, font=font)
-    tw = bbox[2] - bbox[0]
-    th = bbox[3] - bbox[1]
+    tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
     px, py = 10, h - th - 12
     draw.rectangle((px - 4, py - 3, px + tw + 4, py + th + 3), fill=(255, 255, 255), outline=(0, 0, 0))
     draw.text((px, py), label, fill=(0, 0, 0), font=font)
@@ -217,7 +275,7 @@ def write_info_json(latest_dt: datetime, source_url: str, motion: Optional[Tuple
     payload = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "latest_radar_utc": latest_dt.isoformat(),
-        "latest_radar_local": latest_dt.astimezone(timezone(timedelta(hours=2))).isoformat(),
+        "latest_radar_local": latest_dt.astimezone(LOCAL_TZ).isoformat(),
         "source_url": source_url,
     }
     if motion is not None:
@@ -233,18 +291,16 @@ def main() -> None:
     latest_eink, latest_mask = convert_to_eink(latest_raw)
     masks: List[np.ndarray] = []
     for _, frame in history:
-        _, mask = convert_to_eink(frame)
-        masks.append(mask)
+        _, m = convert_to_eink(frame)
+        masks.append(m)
     if not masks:
         masks = [latest_mask]
 
     motion = compute_motion_vector(masks)
     latest_arrow = draw_arrow(latest_eink, motion, latest_dt)
-
     latest_eink.save(LATEST_PNG)
     latest_arrow.save(LATEST_ARROW_PNG)
     write_info_json(latest_dt, source_url, motion)
-
     print(f"Updated radar from {source_url}")
 
 
