@@ -49,7 +49,7 @@ STATIC_RGB_STD_MAX = 2.5
 MIN_COLOR_NEIGHBOURS = 2
 
 # Motion calculation.
-MIN_PRECIP_PIXELS_FOR_MOTION = 300
+MIN_PRECIP_PIXELS_FOR_MOTION = 3000
 MIN_PHASE_CONFIDENCE = 1.15
 MAX_SHIFT_PER_FRAME = 35
 MIN_MOTION_MAG = 0.8
@@ -400,18 +400,18 @@ def draw_dynamic_info(
         mag = math.hypot(vx, vy)
         ux, uy = vx / mag, vy / mag
 
-        arrow_len = int(np.clip(80 + mag * 7, 90, 135))
-        sx = float(np.clip(cx - ux * 18, 22, WIDTH - 22))
-        sy = float(np.clip(cy - uy * 18, 22, MAP_BOTTOM - 15))
+        arrow_len = int(np.clip(45 + mag * 4, 50, 75))
+        sx = float(np.clip(cx - ux * 10, 22, WIDTH - 22))
+        sy = float(np.clip(cy - uy * 10, 22, MAP_BOTTOM - 15))
         ex = float(np.clip(cx + ux * arrow_len, 22, WIDTH - 22))
         ey = float(np.clip(cy + uy * arrow_len, 22, MAP_BOTTOM - 15))
 
         # White halo, then black arrow.
-        draw.line((sx, sy, ex, ey), fill="white", width=13)
-        draw.line((sx, sy, ex, ey), fill="black", width=7)
+        draw.line((sx, sy, ex, ey), fill="white", width=7)
+        draw.line((sx, sy, ex, ey), fill="black", width=3)
 
         ang = math.atan2(ey - sy, ex - sx)
-        hl, hw = 20, 11
+        hl, hw = 11, 6
         left = (
             ex - hl * math.cos(ang) + hw * math.sin(ang),
             ey - hl * math.sin(ang) - hw * math.cos(ang),
