@@ -1,6 +1,6 @@
 {
-  "generated_utc": "2026-08-28T08:14:47.934163+00:00",
-  "latest_radar_utc": "2026-08-28T08:05:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260828-0805-mosaic--.png",
-  "mode": "original_shmu_png_plus_arrow_overlay"
+  "generated_utc": "2026-08-28T08:32:03.571592+00:00",
+  "latest_radar_utc": "2026-08-28T08:20:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260828-0820-mosaic--.png",
+  "mode": "cleaned_background_plus_arrow"
 }
