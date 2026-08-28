@@ -3,6 +3,10 @@ name: Update SHMU radar for e-ink
 on:
   workflow_dispatch:
 
+  # Fallback only. QNAP cron is the primary 5-minute trigger.
+  schedule:
+    - cron: "2,17,32,47 * * * *"
+
   push:
     branches:
       - main
@@ -11,10 +15,6 @@ on:
       - "base_map.png"
       - "requirements.txt"
       - ".github/workflows/update-radar.yml"
-
-  schedule:
-    # Every 5 minutes, offset from the busiest exact :00/:05 slots.
-    - cron: "2,7,12,17,22,27,32,37,42,47,52,57 * * * *"
 
 permissions:
   contents: write
@@ -60,6 +60,36 @@ jobs:
           test -f latest_info.json
           test -f index.html
 
+      - name: Update HTML cache version
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from datetime import datetime
+          from pathlib import Path
+
+          info = json.loads(Path("latest_info.json").read_text(encoding="utf-8"))
+          dt = datetime.fromisoformat(info["latest_radar_utc"].replace("Z", "+00:00"))
+          version = dt.strftime("%Y%m%d%H%M%S")
+
+          p = Path("index.html")
+          html = p.read_text(encoding="utf-8")
+          new_html, count = re.subn(
+              r'latest_arrow\.png\?v=\d+',
+              f'latest_arrow.png?v={version}',
+              html,
+              count=1,
+          )
+
+          if count != 1:
+              raise RuntimeError(
+                  "index.html does not contain exactly one latest_arrow.png?v=<digits> marker"
+              )
+
+          p.write_text(new_html, encoding="utf-8")
+          print(f"HTML radar cache version: {version}")
+          PY
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
@@ -71,5 +101,6 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "Update SHMU radar"
+            git pull --rebase origin main
             git push origin HEAD:main
           fi
