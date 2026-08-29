@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-08-29T04:52:30.101635+00:00",
-  "latest_radar_utc": "2026-08-29T04:45:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260829-0445-mosaic--.png",
+  "generated_utc": "2026-08-29T04:57:36.694453+00:00",
+  "latest_radar_utc": "2026-08-29T04:50:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260829-0450-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 5468,
+  "precipitation_pixels": 5323,
   "motion_method": "centroid_fallback",
   "palette": [
     "#FFFFFF",
@@ -12,14 +12,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 270302,
-    "black_pixels": 12535,
-    "red_pixels": 5163,
+    "white_pixels": 270339,
+    "black_pixels": 12591,
+    "red_pixels": 5070,
     "other_pixels": 0
   },
-  "movement_direction": "S",
+  "movement_direction": "SZ",
   "movement_vector_px_per_5min": {
-    "vx": -0.23,
-    "vy": -1.71
+    "vx": -1.02,
+    "vy": -1.34
   }
 }
