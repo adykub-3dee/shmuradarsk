@@ -66,7 +66,7 @@ STATIONARY_SPARSE_FILL_RATIO = 0.24
 
 # Motion calculation. The arrow is deliberately conservative: it is shown
 # only when several independent phase-correlation measurements agree.
-MIN_PRECIP_PIXELS_FOR_MOTION = 3000
+MIN_PRECIP_PIXELS_FOR_MOTION = 1000
 MIN_PHASE_CONFIDENCE = 1.25
 MAX_SHIFT_PER_FRAME = 35
 MIN_MOTION_MAG = 0.8
