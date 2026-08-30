@@ -1,7 +1,7 @@
 {
-  "generated_utc": "2026-08-30T12:07:27.586723+00:00",
-  "latest_radar_utc": "2026-08-30T11:55:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260830-1155-mosaic--.png",
+  "generated_utc": "2026-08-30T12:12:30.799738+00:00",
+  "latest_radar_utc": "2026-08-30T12:05:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260830-1205-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
   "precipitation_pixels": 0,
@@ -26,8 +26,8 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 275154,
-    "black_pixels": 12846,
+    "white_pixels": 275149,
+    "black_pixels": 12851,
     "red_pixels": 0,
     "other_pixels": 0
   }
