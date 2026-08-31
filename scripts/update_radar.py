@@ -86,7 +86,7 @@ STATIONARY_SPARSE_FILL_RATIO = 0.24
 # Motion calculation is evaluated separately for every connected
 # precipitation area, never from the sum of red pixels on the whole map.
 # Each area needs at least 500 filtered pixels to be eligible for an arrow.
-MIN_COMPONENT_PIXELS_FOR_MOTION = 500
+MIN_COMPONENT_PIXELS_FOR_MOTION = 250
 MIN_COMPONENT_PHASE_PIXELS = 250
 MIN_PHASE_CONFIDENCE = 1.25
 MAX_SHIFT_PER_FRAME = 35
