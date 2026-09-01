@@ -1,7 +1,7 @@
 {
-  "generated_utc": "2026-09-01T18:57:33.969630+00:00",
-  "latest_radar_utc": "2026-09-01T18:45:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260901-1845-mosaic--.png",
+  "generated_utc": "2026-09-01T19:02:34.453281+00:00",
+  "latest_radar_utc": "2026-09-01T18:55:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260901-1855-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
   "precipitation_pixels": 0,
