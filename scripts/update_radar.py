@@ -61,7 +61,7 @@ STRONG_CORE_RED_RIM_PIXELS = 1
 
 # Display-only visual tightening of all red precipitation areas.
 # This does NOT affect precipitation detection, motion tracking, or core logic.
-DISPLAY_PRECIP_EROSION_PIXELS = 1
+DISPLAY_PRECIP_EROSION_PIXELS = 2
 
 # A colored pixel is considered a static SHMU graphic only if it is present
 # essentially all the time AND its RGB value is almost unchanged.
