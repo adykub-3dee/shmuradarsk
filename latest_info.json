@@ -1,18 +1,18 @@
 {
-  "generated_utc": "2026-08-31T23:57:31.905216+00:00",
-  "latest_radar_utc": "2026-08-31T23:45:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260831-2345-mosaic--.png",
+  "generated_utc": "2026-09-01T00:02:37.758853+00:00",
+  "latest_radar_utc": "2026-08-31T23:55:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260831-2355-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 27875,
-  "strong_core_pixels": 76,
+  "precipitation_pixels": 28394,
+  "strong_core_pixels": 184,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
     "min_red": 170,
     "max_green": 130,
     "min_red_green_margin": 55
   },
-  "motion_method": "per_component_phase_correlation_partial",
+  "motion_method": "per_component_core_guided_partial",
   "filter_min_component_pixels": 60,
   "filter_temporal_confirmation": "2/3",
   "motion_scope": "per_connected_component",
@@ -20,8 +20,8 @@
   "motion_min_precip_pixels": 250,
   "motion_candidate_components": 6,
   "motion_arrows": 4,
-  "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 4,
+  "motion_core_guided_arrows": 1,
+  "motion_precipitation_only_arrows": 3,
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
   "palette": [
@@ -30,67 +30,76 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 214095,
-    "black_pixels": 46532,
-    "red_pixels": 27373,
+    "white_pixels": 213705,
+    "black_pixels": 46523,
+    "red_pixels": 27772,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 2378,
-      "direction": "V",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 4.0,
-        "vy": 0.0
-      },
-      "center_px": {
-        "x": 533.8,
-        "y": 118.7
-      },
-      "consistent_measurements": 3
-    },
-    {
-      "area_pixels": 1506,
-      "direction": "V",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 2.0,
-        "vy": 0.0
-      },
-      "center_px": {
-        "x": 491.6,
-        "y": 198.7
-      },
-      "consistent_measurements": 3
-    },
-    {
-      "area_pixels": 642,
-      "direction": "JV",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 4.0,
-        "vy": 2.0
-      },
-      "center_px": {
-        "x": 307.4,
-        "y": 122.6
-      },
-      "consistent_measurements": 3
-    },
-    {
-      "area_pixels": 320,
+      "area_pixels": 21977,
       "direction": "SV",
+      "motion_source": "strong_core",
+      "movement_vector_px_per_5min": {
+        "vx": 3.53,
+        "vy": -2.42
+      },
+      "center_px": {
+        "x": 207.7,
+        "y": 259.6
+      },
+      "consistent_measurements": 6,
+      "core_area_pixels": 140,
+      "core_history_positions": 4,
+      "core_consistent_measurements": 6,
+      "core_vector_px_per_5min": {
+        "vx": 3.53,
+        "vy": -2.42
+      },
+      "precip_vector_px_per_5min": null,
+      "direction_difference_deg": null
+    },
+    {
+      "area_pixels": 1589,
+      "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
         "vx": 4.0,
-        "vy": -2.0
+        "vy": -1.0
       },
       "center_px": {
-        "x": 275.9,
-        "y": 61.7
+        "x": 538.4,
+        "y": 111.1
       },
       "consistent_measurements": 2
+    },
+    {
+      "area_pixels": 1457,
+      "direction": "V",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 3.0,
+        "vy": 0.0
+      },
+      "center_px": {
+        "x": 494.4,
+        "y": 196.8
+      },
+      "consistent_measurements": 2
+    },
+    {
+      "area_pixels": 487,
+      "direction": "V",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 4.0,
+        "vy": 1.0
+      },
+      "center_px": {
+        "x": 315.9,
+        "y": 122.9
+      },
+      "consistent_measurements": 4
     }
   ]
 }
