@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-03T12:37:29.342747+00:00",
-  "latest_radar_utc": "2026-09-03T12:25:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260903-1225-mosaic--.png",
+  "generated_utc": "2026-09-03T12:42:43.095037+00:00",
+  "latest_radar_utc": "2026-09-03T12:35:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260903-1235-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 5344,
+  "precipitation_pixels": 5412,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -12,13 +12,13 @@
     "max_green": 130,
     "min_red_green_margin": 55
   },
-  "motion_method": "per_component_phase_correlation_partial",
+  "motion_method": "per_component_phase_correlation_consistent",
   "filter_min_component_pixels": 60,
   "filter_temporal_confirmation": "2/3",
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 8,
+  "motion_candidate_components": 7,
   "motion_arrows": 7,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 7,
@@ -30,14 +30,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 235029,
-    "black_pixels": 50414,
-    "red_pixels": 2557,
+    "white_pixels": 234890,
+    "black_pixels": 50469,
+    "red_pixels": 2641,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 970,
+      "area_pixels": 825,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -45,13 +45,13 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 477.2,
-        "y": 182.5
+        "x": 480.7,
+        "y": 183.5
       },
       "consistent_measurements": 4
     },
     {
-      "area_pixels": 675,
+      "area_pixels": 705,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -59,27 +59,27 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 285.7,
-        "y": 140.0
+        "x": 319.9,
+        "y": 192.3
       },
       "consistent_measurements": 4
     },
     {
-      "area_pixels": 638,
-      "direction": "V",
+      "area_pixels": 647,
+      "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
-        "vx": 3.0,
-        "vy": 0.0
+        "vx": 2.0,
+        "vy": 2.0
       },
       "center_px": {
-        "x": 315.2,
-        "y": 189.4
+        "x": 290.6,
+        "y": 141.8
       },
-      "consistent_measurements": 4
+      "consistent_measurements": 3
     },
     {
-      "area_pixels": 511,
+      "area_pixels": 451,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -87,27 +87,27 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 441.6,
-        "y": 183.1
+        "x": 446.4,
+        "y": 185.9
       },
-      "consistent_measurements": 4
+      "consistent_measurements": 3
     },
     {
-      "area_pixels": 439,
+      "area_pixels": 441,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
-        "vx": 2.0,
+        "vx": 4.0,
         "vy": 0.0
       },
       "center_px": {
-        "x": 528.7,
-        "y": 101.2
+        "x": 536.0,
+        "y": 102.3
       },
       "consistent_measurements": 5
     },
     {
-      "area_pixels": 425,
+      "area_pixels": 409,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -115,13 +115,13 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 488.3,
-        "y": 148.1
+        "x": 494.6,
+        "y": 150.1
       },
-      "consistent_measurements": 5
+      "consistent_measurements": 4
     },
     {
-      "area_pixels": 330,
+      "area_pixels": 356,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -129,10 +129,10 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 246.8,
-        "y": 84.2
+        "x": 251.0,
+        "y": 85.7
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 3
     }
   ]
 }
