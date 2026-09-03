@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-09-03T03:12:35.905027+00:00",
-  "latest_radar_utc": "2026-09-03T03:05:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260903-0305-mosaic--.png",
+  "generated_utc": "2026-09-03T03:17:33.644881+00:00",
+  "latest_radar_utc": "2026-09-03T03:10:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260903-0310-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 11353,
-  "strong_core_pixels": 126,
+  "precipitation_pixels": 11271,
+  "strong_core_pixels": 107,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
     "min_red": 170,
@@ -18,10 +18,10 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 3,
-  "motion_arrows": 3,
+  "motion_candidate_components": 4,
+  "motion_arrows": 4,
   "motion_core_guided_arrows": 2,
-  "motion_precipitation_only_arrows": 1,
+  "motion_precipitation_only_arrows": 2,
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
   "palette": [
@@ -30,14 +30,40 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 230076,
-    "black_pixels": 49522,
-    "red_pixels": 8402,
+    "white_pixels": 229957,
+    "black_pixels": 49685,
+    "red_pixels": 8358,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 4855,
+      "area_pixels": 4335,
+      "direction": "V",
+      "motion_source": "strong_core_blend",
+      "movement_vector_px_per_5min": {
+        "vx": 3.96,
+        "vy": 0.41
+      },
+      "center_px": {
+        "x": 230.3,
+        "y": 201.9
+      },
+      "consistent_measurements": 10,
+      "core_area_pixels": 32,
+      "core_history_positions": 5,
+      "core_consistent_measurements": 10,
+      "core_vector_px_per_5min": {
+        "vx": 3.95,
+        "vy": 0.54
+      },
+      "precip_vector_px_per_5min": {
+        "vx": 4.0,
+        "vy": 0.0
+      },
+      "direction_difference_deg": 7.8
+    },
+    {
+      "area_pixels": 4206,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -45,59 +71,47 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 367.3,
-        "y": 117.5
+        "x": 373.7,
+        "y": 111.6
       },
       "consistent_measurements": 5
     },
     {
-      "area_pixels": 4272,
+      "area_pixels": 2053,
       "direction": "V",
-      "motion_source": "strong_core_blend",
-      "movement_vector_px_per_5min": {
-        "vx": 3.78,
-        "vy": 0.95
-      },
-      "center_px": {
-        "x": 225.5,
-        "y": 201.5
-      },
-      "consistent_measurements": 6,
-      "core_area_pixels": 42,
-      "core_history_positions": 4,
-      "core_consistent_measurements": 6,
-      "core_vector_px_per_5min": {
-        "vx": 3.71,
-        "vy": 0.6
-      },
-      "precip_vector_px_per_5min": {
-        "vx": 4.0,
-        "vy": 2.0
-      },
-      "direction_difference_deg": 17.4
-    },
-    {
-      "area_pixels": 2114,
-      "direction": "JV",
       "motion_source": "strong_core",
       "movement_vector_px_per_5min": {
-        "vx": 2.52,
-        "vy": 1.24
+        "vx": 2.47,
+        "vy": 0.63
       },
       "center_px": {
-        "x": 351.2,
-        "y": 238.1
+        "x": 354.1,
+        "y": 236.9
       },
       "consistent_measurements": 10,
-      "core_area_pixels": 56,
+      "core_area_pixels": 49,
       "core_history_positions": 5,
       "core_consistent_measurements": 10,
       "core_vector_px_per_5min": {
-        "vx": 2.52,
-        "vy": 1.24
+        "vx": 2.47,
+        "vy": 0.63
       },
       "precip_vector_px_per_5min": null,
       "direction_difference_deg": null
+    },
+    {
+      "area_pixels": 535,
+      "direction": "V",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 4.0,
+        "vy": 0.0
+      },
+      "center_px": {
+        "x": 359.9,
+        "y": 158.2
+      },
+      "consistent_measurements": 4
     }
   ]
 }
