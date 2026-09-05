@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-05T03:37:32.562392+00:00",
-  "latest_radar_utc": "2026-09-05T03:25:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260905-0325-mosaic--.png",
+  "generated_utc": "2026-09-05T03:42:30.080279+00:00",
+  "latest_radar_utc": "2026-09-05T03:30:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260905-0330-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 4550,
+  "precipitation_pixels": 4226,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -19,9 +19,9 @@
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
   "motion_candidate_components": 5,
-  "motion_arrows": 1,
+  "motion_arrows": 2,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 1,
+  "motion_precipitation_only_arrows": 2,
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
   "palette": [
@@ -30,14 +30,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 235155,
-    "black_pixels": 49946,
-    "red_pixels": 2899,
+    "white_pixels": 235393,
+    "black_pixels": 50106,
+    "red_pixels": 2501,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 2308,
+      "area_pixels": 1678,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -45,10 +45,24 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 465.5,
-        "y": 87.8
+        "x": 487.8,
+        "y": 83.2
       },
-      "consistent_measurements": 3
+      "consistent_measurements": 4
+    },
+    {
+      "area_pixels": 490,
+      "direction": "V",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 17.0,
+        "vy": -5.0
+      },
+      "center_px": {
+        "x": 418.5,
+        "y": 67.4
+      },
+      "consistent_measurements": 2
     }
   ]
 }
