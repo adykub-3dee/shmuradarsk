@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-05T07:07:44.596066+00:00",
-  "latest_radar_utc": "2026-09-05T06:55:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260905-0655-mosaic--.png",
+  "generated_utc": "2026-09-05T07:12:42.105395+00:00",
+  "latest_radar_utc": "2026-09-05T07:00:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260905-0700-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 27227,
+  "precipitation_pixels": 28528,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,10 +18,10 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 8,
-  "motion_arrows": 2,
+  "motion_candidate_components": 6,
+  "motion_arrows": 1,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 2,
+  "motion_precipitation_only_arrows": 1,
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
   "palette": [
@@ -30,28 +30,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 220183,
-    "black_pixels": 47931,
-    "red_pixels": 19886,
+    "white_pixels": 219811,
+    "black_pixels": 47426,
+    "red_pixels": 20763,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 2983,
-      "direction": "V",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 11.0,
-        "vy": -1.0
-      },
-      "center_px": {
-        "x": 350.5,
-        "y": 192.0
-      },
-      "consistent_measurements": 2
-    },
-    {
-      "area_pixels": 319,
+      "area_pixels": 3262,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -59,10 +45,10 @@
         "vy": -2.0
       },
       "center_px": {
-        "x": 211.9,
-        "y": 199.3
+        "x": 361.9,
+        "y": 191.4
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 3
     }
   ]
 }
