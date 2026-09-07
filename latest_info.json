@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-07T20:57:44.675508+00:00",
-  "latest_radar_utc": "2026-09-07T20:45:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260907-2045-mosaic--.png",
+  "generated_utc": "2026-09-07T21:02:40.702151+00:00",
+  "latest_radar_utc": "2026-09-07T20:55:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260907-2055-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 7980,
+  "precipitation_pixels": 9120,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -19,9 +19,9 @@
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
   "motion_candidate_components": 3,
-  "motion_arrows": 1,
+  "motion_arrows": 2,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 1,
+  "motion_precipitation_only_arrows": 2,
   "motion_front_fallback_arrows": 0,
   "front_fallback_enabled": true,
   "front_fallback_min_component_pixels": 3000,
@@ -35,14 +35,28 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 233272,
-    "black_pixels": 49577,
-    "red_pixels": 5151,
+    "white_pixels": 232339,
+    "black_pixels": 49798,
+    "red_pixels": 5863,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 1053,
+      "area_pixels": 7396,
+      "direction": "V",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 4.0,
+        "vy": 1.0
+      },
+      "center_px": {
+        "x": 232.9,
+        "y": 118.3
+      },
+      "consistent_measurements": 2
+    },
+    {
+      "area_pixels": 1110,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -50,8 +64,8 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 490.2,
-        "y": 83.4
+        "x": 499.3,
+        "y": 85.3
       },
       "consistent_measurements": 5
     }
