@@ -1,27 +1,27 @@
 {
-  "generated_utc": "2026-09-09T21:46:31.842444+00:00",
-  "latest_radar_utc": "2026-09-09T21:35:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260909-2135-mosaic--.png",
+  "generated_utc": "2026-09-09T21:51:34.907404+00:00",
+  "latest_radar_utc": "2026-09-09T21:40:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260909-2140-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 20593,
-  "strong_core_pixels": 0,
+  "precipitation_pixels": 20439,
+  "strong_core_pixels": 24,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
     "min_red": 170,
     "max_green": 130,
     "min_red_green_margin": 55
   },
-  "motion_method": "per_component_phase_correlation_partial",
+  "motion_method": "component_motion_not_reliable",
   "filter_min_component_pixels": 60,
   "filter_temporal_confirmation": "2/3",
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 5,
-  "motion_arrows": 1,
+  "motion_candidate_components": 4,
+  "motion_arrows": 0,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 1,
+  "motion_precipitation_only_arrows": 0,
   "motion_front_fallback_arrows": 0,
   "front_fallback_enabled": true,
   "front_fallback_min_component_pixels": 3000,
@@ -35,25 +35,9 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 224658,
-    "black_pixels": 48121,
-    "red_pixels": 15221,
+    "white_pixels": 224909,
+    "black_pixels": 47952,
+    "red_pixels": 15139,
     "other_pixels": 0
-  },
-  "movement_components": [
-    {
-      "area_pixels": 313,
-      "direction": "SV",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 2.0,
-        "vy": -4.0
-      },
-      "center_px": {
-        "x": 387.7,
-        "y": 195.0
-      },
-      "consistent_measurements": 3
-    }
-  ]
+  }
 }
