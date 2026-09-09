@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-09-09T22:16:25.084585+00:00",
-  "latest_radar_utc": "2026-09-09T22:05:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260909-2205-mosaic--.png",
+  "generated_utc": "2026-09-09T22:21:30.295756+00:00",
+  "latest_radar_utc": "2026-09-09T22:10:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260909-2210-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 19151,
-  "strong_core_pixels": 53,
+  "precipitation_pixels": 18920,
+  "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
     "min_red": 170,
@@ -18,7 +18,7 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 5,
+  "motion_candidate_components": 6,
   "motion_arrows": 2,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 2,
@@ -35,28 +35,28 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 225406,
-    "black_pixels": 48546,
-    "red_pixels": 14048,
+    "white_pixels": 225381,
+    "black_pixels": 48589,
+    "red_pixels": 14030,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 3057,
+      "area_pixels": 541,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
-        "vx": 4.0,
+        "vx": 3.0,
         "vy": -4.0
       },
       "center_px": {
-        "x": 266.8,
-        "y": 227.4
+        "x": 340.1,
+        "y": 211.4
       },
       "consistent_measurements": 2
     },
     {
-      "area_pixels": 649,
+      "area_pixels": 397,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -64,8 +64,8 @@
         "vy": -4.0
       },
       "center_px": {
-        "x": 293.8,
-        "y": 94.1
+        "x": 298.9,
+        "y": 97.8
       },
       "consistent_measurements": 4
     }
