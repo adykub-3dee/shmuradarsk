@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-09-09T19:01:29.950007+00:00",
-  "latest_radar_utc": "2026-09-09T18:50:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260909-1850-mosaic--.png",
+  "generated_utc": "2026-09-09T19:06:26.631490+00:00",
+  "latest_radar_utc": "2026-09-09T18:55:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260909-1855-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 8472,
-  "strong_core_pixels": 180,
+  "precipitation_pixels": 8691,
+  "strong_core_pixels": 224,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
     "min_red": 170,
@@ -35,66 +35,66 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 232189,
-    "black_pixels": 50168,
-    "red_pixels": 5643,
+    "white_pixels": 231932,
+    "black_pixels": 50217,
+    "red_pixels": 5851,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 3794,
+      "area_pixels": 3655,
       "direction": "S",
       "motion_source": "strong_core_blend",
       "movement_vector_px_per_5min": {
-        "vx": 1.04,
-        "vy": -3.98
+        "vx": 1.0,
+        "vy": -3.47
       },
       "center_px": {
-        "x": 175.7,
-        "y": 174.2
+        "x": 177.1,
+        "y": 170.7
       },
       "consistent_measurements": 10,
-      "core_area_pixels": 112,
+      "core_area_pixels": 110,
       "core_history_positions": 5,
       "core_consistent_measurements": 10,
       "core_vector_px_per_5min": {
-        "vx": 0.73,
-        "vy": -3.31
+        "vx": 0.67,
+        "vy": -2.63
       },
       "precip_vector_px_per_5min": {
         "vx": 2.0,
         "vy": -6.0
       },
-      "direction_difference_deg": 6.1
+      "direction_difference_deg": 4.2
     },
     {
-      "area_pixels": 3060,
+      "area_pixels": 3333,
       "direction": "S",
       "motion_source": "strong_core_blend",
       "movement_vector_px_per_5min": {
-        "vx": 0.89,
-        "vy": -8.58
+        "vx": 1.43,
+        "vy": -6.72
       },
       "center_px": {
-        "x": 196.1,
-        "y": 227.0
+        "x": 197.0,
+        "y": 221.5
       },
       "consistent_measurements": 10,
-      "core_area_pixels": 22,
+      "core_area_pixels": 26,
       "core_history_positions": 5,
       "core_consistent_measurements": 10,
       "core_vector_px_per_5min": {
-        "vx": 0.52,
-        "vy": -10.11
+        "vx": 1.24,
+        "vy": -7.63
       },
       "precip_vector_px_per_5min": {
         "vx": 2.0,
         "vy": -4.0
       },
-      "direction_difference_deg": 23.6
+      "direction_difference_deg": 17.3
     },
     {
-      "area_pixels": 509,
+      "area_pixels": 404,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -102,8 +102,8 @@
         "vy": -4.0
       },
       "center_px": {
-        "x": 215.8,
-        "y": 191.6
+        "x": 218.3,
+        "y": 185.9
       },
       "consistent_measurements": 5
     }
