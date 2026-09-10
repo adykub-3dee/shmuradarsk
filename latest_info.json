@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-10T15:36:32.693023+00:00",
-  "latest_radar_utc": "2026-09-10T15:25:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260910-1525-mosaic--.png",
+  "generated_utc": "2026-09-10T15:51:42.610490+00:00",
+  "latest_radar_utc": "2026-09-10T15:40:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260910-1540-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 5262,
+  "precipitation_pixels": 3404,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,7 +18,7 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 5,
+  "motion_candidate_components": 3,
   "motion_arrows": 2,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 2,
@@ -38,14 +38,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 235313,
-    "black_pixels": 49704,
-    "red_pixels": 2983,
+    "white_pixels": 235756,
+    "black_pixels": 50295,
+    "red_pixels": 1949,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 1030,
+      "area_pixels": 2364,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -53,28 +53,24 @@
         "vy": -4.0
       },
       "center_px": {
-        "x": 182.4,
-        "y": 264.9
+        "x": 295.2,
+        "y": 188.6
       },
-      "consistent_measurements": 5,
-      "temporal_previous_direction": "SV",
-      "temporal_turn_deg": 18.4,
-      "temporal_match_distance_px": 5.1,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 3
     },
     {
-      "area_pixels": 262,
+      "area_pixels": 268,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
-        "vx": 6.0,
-        "vy": -5.0
+        "vx": 4.0,
+        "vy": -4.0
       },
       "center_px": {
-        "x": 365.4,
-        "y": 236.0
+        "x": 175.4,
+        "y": 248.1
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 4
     }
   ]
 }
