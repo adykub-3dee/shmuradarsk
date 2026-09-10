@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-10T12:21:38.969766+00:00",
-  "latest_radar_utc": "2026-09-10T12:10:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260910-1210-mosaic--.png",
+  "generated_utc": "2026-09-10T12:26:35.506308+00:00",
+  "latest_radar_utc": "2026-09-10T12:20:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260910-1220-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 15344,
+  "precipitation_pixels": 14853,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,10 +18,10 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 5,
-  "motion_arrows": 1,
+  "motion_candidate_components": 6,
+  "motion_arrows": 2,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 1,
+  "motion_precipitation_only_arrows": 2,
   "motion_temporal_guard_suppressed": 0,
   "motion_core_conflict_max_angle_deg": 55.0,
   "motion_temporal_turn_max_angle_deg": 60.0,
@@ -38,14 +38,28 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 227199,
-    "black_pixels": 48755,
-    "red_pixels": 12046,
+    "white_pixels": 227248,
+    "black_pixels": 49149,
+    "red_pixels": 11603,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 602,
+      "area_pixels": 658,
+      "direction": "SV",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 4.0,
+        "vy": -2.0
+      },
+      "center_px": {
+        "x": 348.0,
+        "y": 154.2
+      },
+      "consistent_measurements": 3
+    },
+    {
+      "area_pixels": 405,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -53,8 +67,8 @@
         "vy": -1.0
       },
       "center_px": {
-        "x": 342.9,
-        "y": 154.0
+        "x": 296.0,
+        "y": 169.9
       },
       "consistent_measurements": 2
     }
