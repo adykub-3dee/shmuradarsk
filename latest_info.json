@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-11T16:01:33.954922+00:00",
-  "latest_radar_utc": "2026-09-11T15:50:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260911-1550-mosaic--.png",
+  "generated_utc": "2026-09-11T16:06:33.131399+00:00",
+  "latest_radar_utc": "2026-09-11T15:55:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260911-1555-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 14164,
+  "precipitation_pixels": 13550,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 29,
-    "filled": 21,
-    "filled_pixels": 106,
-    "largest_filled_pixels": 41
+    "detected": 26,
+    "filled": 19,
+    "filled_pixels": 133,
+    "largest_filled_pixels": 77
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,32 +53,32 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 228233,
-    "black_pixels": 48270,
-    "red_pixels": 11497,
+    "white_pixels": 228909,
+    "black_pixels": 48352,
+    "red_pixels": 10739,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 1559,
+      "area_pixels": 1415,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
         "vx": 4.0,
-        "vy": -3.0
+        "vy": -2.0
       },
       "center_px": {
-        "x": 219.4,
-        "y": 70.7
+        "x": 221.9,
+        "y": 69.1
       },
-      "consistent_measurements": 4,
+      "consistent_measurements": 5,
       "temporal_previous_direction": "SV",
       "temporal_turn_deg": 10.3,
-      "temporal_match_distance_px": 3.8,
+      "temporal_match_distance_px": 3.0,
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 1083,
+      "area_pixels": 1044,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -86,10 +86,14 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 210.9,
-        "y": 300.7
+        "x": 213.3,
+        "y": 300.4
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 2,
+      "temporal_previous_direction": "V",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 2.4,
+      "temporal_guard_action": "accepted"
     }
   ]
 }
