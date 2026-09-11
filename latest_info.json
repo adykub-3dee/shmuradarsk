@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-11T14:16:29.718504+00:00",
-  "latest_radar_utc": "2026-09-11T14:05:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260911-1405-mosaic--.png",
+  "generated_utc": "2026-09-11T14:32:01.307346+00:00",
+  "latest_radar_utc": "2026-09-11T14:20:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260911-1420-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 16466,
+  "precipitation_pixels": 16901,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,7 +18,7 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 4,
+  "motion_candidate_components": 2,
   "motion_arrows": 1,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 1,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 50,
-    "filled": 44,
-    "filled_pixels": 184,
-    "largest_filled_pixels": 59
+    "detected": 56,
+    "filled": 45,
+    "filled_pixels": 169,
+    "largest_filled_pixels": 23
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 227447,
-    "black_pixels": 47511,
-    "red_pixels": 13042,
+    "white_pixels": 227086,
+    "black_pixels": 47413,
+    "red_pixels": 13501,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 3566,
+      "area_pixels": 3851,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,10 +68,10 @@
         "vy": -2.0
       },
       "center_px": {
-        "x": 194.8,
-        "y": 98.0
+        "x": 201.2,
+        "y": 92.6
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 3
     }
   ]
 }
