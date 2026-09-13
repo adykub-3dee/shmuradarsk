@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-13T18:31:35.715007+00:00",
-  "latest_radar_utc": "2026-09-13T18:20:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260913-1820-mosaic--.png",
+  "generated_utc": "2026-09-13T18:36:26.831440+00:00",
+  "latest_radar_utc": "2026-09-13T18:25:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260913-1825-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 8793,
+  "precipitation_pixels": 8300,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,10 +18,10 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 6,
-  "motion_arrows": 3,
+  "motion_candidate_components": 5,
+  "motion_arrows": 4,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 3,
+  "motion_precipitation_only_arrows": 4,
   "motion_temporal_guard_suppressed": 0,
   "motion_core_conflict_max_angle_deg": 55.0,
   "motion_temporal_turn_max_angle_deg": 60.0,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 14,
-    "filled": 13,
-    "filled_pixels": 41,
-    "largest_filled_pixels": 12
+    "detected": 17,
+    "filled": 16,
+    "filled_pixels": 34,
+    "largest_filled_pixels": 5
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,32 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 233178,
-    "black_pixels": 49713,
-    "red_pixels": 5109,
+    "white_pixels": 233176,
+    "black_pixels": 49887,
+    "red_pixels": 4937,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 2311,
-      "direction": "JV",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 3.0,
-        "vy": 3.0
-      },
-      "center_px": {
-        "x": 119.7,
-        "y": 276.9
-      },
-      "consistent_measurements": 2,
-      "temporal_previous_direction": "JV",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 20.0,
-      "temporal_guard_action": "accepted"
-    },
-    {
-      "area_pixels": 1020,
+      "area_pixels": 2270,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -86,17 +68,45 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 269.6,
-        "y": 188.1
+        "x": 146.2,
+        "y": 213.4
+      },
+      "consistent_measurements": 3
+    },
+    {
+      "area_pixels": 1070,
+      "direction": "JV",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 2.0,
+        "vy": 4.0
+      },
+      "center_px": {
+        "x": 270.9,
+        "y": 189.4
       },
       "consistent_measurements": 5,
       "temporal_previous_direction": "JV",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 7.0,
+      "temporal_turn_deg": 18.4,
+      "temporal_match_distance_px": 1.8,
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 699,
+      "area_pixels": 775,
+      "direction": "JV",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 2.5,
+        "vy": 2.5
+      },
+      "center_px": {
+        "x": 149.2,
+        "y": 151.6
+      },
+      "consistent_measurements": 2
+    },
+    {
+      "area_pixels": 644,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -104,13 +114,13 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 269.0,
-        "y": 81.5
+        "x": 271.4,
+        "y": 83.7
       },
       "consistent_measurements": 5,
       "temporal_previous_direction": "JV",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 2.6,
+      "temporal_match_distance_px": 3.3,
       "temporal_guard_action": "accepted"
     }
   ]
