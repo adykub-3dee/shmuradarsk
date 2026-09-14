@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-14T06:37:13.982814+00:00",
-  "latest_radar_utc": "2026-09-14T06:25:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260914-0625-mosaic--.png",
+  "generated_utc": "2026-09-14T06:41:27.591536+00:00",
+  "latest_radar_utc": "2026-09-14T06:30:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260914-0630-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 17342,
+  "precipitation_pixels": 17257,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 38,
-    "filled": 33,
-    "filled_pixels": 95,
-    "largest_filled_pixels": 14
+    "detected": 45,
+    "filled": 41,
+    "filled_pixels": 106,
+    "largest_filled_pixels": 17
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 226495,
-    "black_pixels": 48738,
-    "red_pixels": 12767,
+    "white_pixels": 226473,
+    "black_pixels": 48757,
+    "red_pixels": 12770,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 11316,
+      "area_pixels": 12015,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,13 +68,17 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 211.2,
-        "y": 208.1
+        "x": 215.4,
+        "y": 208.0
       },
-      "consistent_measurements": 5
+      "consistent_measurements": 4,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 4.2,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 752,
+      "area_pixels": 982,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -82,10 +86,14 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 102.4,
-        "y": 179.9
+        "x": 104.4,
+        "y": 185.0
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 5.4,
+      "temporal_guard_action": "accepted"
     }
   ]
 }
