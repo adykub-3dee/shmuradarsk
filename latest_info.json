@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-17T17:36:34.692405+00:00",
-  "latest_radar_utc": "2026-09-17T17:25:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260917-1725-mosaic--.png",
+  "generated_utc": "2026-09-17T17:41:36.026539+00:00",
+  "latest_radar_utc": "2026-09-17T17:30:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260917-1730-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 6691,
+  "precipitation_pixels": 6319,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -19,9 +19,9 @@
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
   "motion_candidate_components": 9,
-  "motion_arrows": 2,
+  "motion_arrows": 4,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 2,
+  "motion_precipitation_only_arrows": 4,
   "motion_temporal_guard_suppressed": 0,
   "motion_core_conflict_max_angle_deg": 55.0,
   "motion_temporal_turn_max_angle_deg": 60.0,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 9,
-    "filled": 9,
-    "filled_pixels": 29,
-    "largest_filled_pixels": 19
+    "detected": 10,
+    "filled": 10,
+    "filled_pixels": 16,
+    "largest_filled_pixels": 3
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 234496,
-    "black_pixels": 49912,
-    "red_pixels": 3592,
+    "white_pixels": 234474,
+    "black_pixels": 50207,
+    "red_pixels": 3319,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 842,
+      "area_pixels": 531,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,17 +68,17 @@
         "vy": -2.0
       },
       "center_px": {
-        "x": 203.1,
-        "y": 122.6
+        "x": 407.8,
+        "y": 67.6
       },
       "consistent_measurements": 3,
       "temporal_previous_direction": "SV",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 3.8,
+      "temporal_match_distance_px": 5.7,
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 538,
+      "area_pixels": 462,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -86,14 +86,46 @@
         "vy": -2.0
       },
       "center_px": {
-        "x": 402.2,
-        "y": 68.7
+        "x": 192.2,
+        "y": 132.7
       },
-      "consistent_measurements": 4,
+      "consistent_measurements": 2,
       "temporal_previous_direction": "SV",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 5.2,
+      "temporal_match_distance_px": 14.9,
       "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 399,
+      "direction": "SV",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 4.0,
+        "vy": -2.0
+      },
+      "center_px": {
+        "x": 223.3,
+        "y": 107.4
+      },
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "SV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 25.3,
+      "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 269,
+      "direction": "V",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 2.0,
+        "vy": 0.0
+      },
+      "center_px": {
+        "x": 97.4,
+        "y": 201.7
+      },
+      "consistent_measurements": 2
     }
   ]
 }
