@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-18T01:46:33.357022+00:00",
-  "latest_radar_utc": "2026-09-18T01:35:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260918-0135-mosaic--.png",
+  "generated_utc": "2026-09-18T01:51:33.737795+00:00",
+  "latest_radar_utc": "2026-09-18T01:40:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260918-0140-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 6131,
+  "precipitation_pixels": 5921,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,10 +18,10 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 9,
-  "motion_arrows": 5,
+  "motion_candidate_components": 7,
+  "motion_arrows": 4,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 5,
+  "motion_precipitation_only_arrows": 4,
   "motion_temporal_guard_suppressed": 0,
   "motion_core_conflict_max_angle_deg": 55.0,
   "motion_temporal_turn_max_angle_deg": 60.0,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 6,
-    "filled": 5,
-    "filled_pixels": 6,
-    "largest_filled_pixels": 2
+    "detected": 9,
+    "filled": 8,
+    "filled_pixels": 46,
+    "largest_filled_pixels": 24
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 234778,
-    "black_pixels": 49800,
-    "red_pixels": 3422,
+    "white_pixels": 234947,
+    "black_pixels": 49731,
+    "red_pixels": 3322,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 1936,
+      "area_pixels": 2117,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,17 +68,17 @@
         "vy": -2.0
       },
       "center_px": {
-        "x": 528.5,
-        "y": 88.4
+        "x": 527.5,
+        "y": 85.3
       },
-      "consistent_measurements": 3,
+      "consistent_measurements": 2,
       "temporal_previous_direction": "SV",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 5.9,
+      "temporal_match_distance_px": 3.3,
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 791,
+      "area_pixels": 736,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -86,17 +86,17 @@
         "vy": -2.0
       },
       "center_px": {
-        "x": 557.9,
-        "y": 179.1
+        "x": 559.2,
+        "y": 177.2
       },
       "consistent_measurements": 3,
       "temporal_previous_direction": "SV",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 7.0,
+      "temporal_match_distance_px": 2.3,
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 452,
+      "area_pixels": 541,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -104,27 +104,17 @@
         "vy": -3.0
       },
       "center_px": {
-        "x": 522.3,
-        "y": 208.0
+        "x": 524.3,
+        "y": 207.2
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 2,
+      "temporal_previous_direction": "SV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 2.1,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 451,
-      "direction": "SV",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 2.0,
-        "vy": -2.0
-      },
-      "center_px": {
-        "x": 402.3,
-        "y": 147.3
-      },
-      "consistent_measurements": 4
-    },
-    {
-      "area_pixels": 286,
+      "area_pixels": 276,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -132,10 +122,14 @@
         "vy": -3.0
       },
       "center_px": {
-        "x": 567.6,
-        "y": 145.7
+        "x": 565.9,
+        "y": 143.8
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 2,
+      "temporal_previous_direction": "SV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 2.6,
+      "temporal_guard_action": "accepted"
     }
   ]
 }
