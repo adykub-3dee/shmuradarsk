@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-20T18:11:30.006546+00:00",
-  "latest_radar_utc": "2026-09-20T18:00:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260920-1800-mosaic--.png",
+  "generated_utc": "2026-09-20T18:16:30.144394+00:00",
+  "latest_radar_utc": "2026-09-20T18:05:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260920-1805-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 5162,
+  "precipitation_pixels": 5477,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,7 +18,7 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 2,
+  "motion_candidate_components": 4,
   "motion_arrows": 1,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 1,
@@ -40,9 +40,9 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 7,
+    "detected": 8,
     "filled": 6,
-    "filled_pixels": 16,
+    "filled_pixels": 17,
     "largest_filled_pixels": 7
   },
   "core_motion_history_frames": 5,
@@ -53,25 +53,29 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 234481,
-    "black_pixels": 49666,
-    "red_pixels": 3853,
+    "white_pixels": 234509,
+    "black_pixels": 49592,
+    "red_pixels": 3899,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 863,
+      "area_pixels": 809,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
-        "vx": 2.0,
+        "vx": 3.0,
         "vy": 2.0
       },
       "center_px": {
-        "x": 319.4,
-        "y": 80.6
+        "x": 325.4,
+        "y": 81.3
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 2,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 11.3,
+      "temporal_match_distance_px": 6.0,
+      "temporal_guard_action": "accepted"
     }
   ]
 }
