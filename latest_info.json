@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-09-20T20:46:31.538522+00:00",
-  "latest_radar_utc": "2026-09-20T20:35:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260920-2035-mosaic--.png",
+  "generated_utc": "2026-09-20T20:51:34.954412+00:00",
+  "latest_radar_utc": "2026-09-20T20:40:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260920-2040-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 37562,
-  "strong_core_pixels": 19,
+  "precipitation_pixels": 40668,
+  "strong_core_pixels": 20,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
     "min_red": 170,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 157,
-    "filled": 127,
-    "filled_pixels": 439,
-    "largest_filled_pixels": 21
+    "detected": 196,
+    "filled": 162,
+    "filled_pixels": 760,
+    "largest_filled_pixels": 75
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,34 +53,38 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 208405,
-    "black_pixels": 45759,
-    "red_pixels": 33836,
+    "white_pixels": 204747,
+    "black_pixels": 45162,
+    "red_pixels": 38091,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 36274,
+      "area_pixels": 39417,
       "direction": "V",
       "motion_source": "strong_core",
       "movement_vector_px_per_5min": {
-        "vx": 5.67,
-        "vy": 0.65
+        "vx": 6.09,
+        "vy": 0.43
       },
       "center_px": {
-        "x": 298.6,
-        "y": 72.7
+        "x": 305.8,
+        "y": 72.2
       },
-      "consistent_measurements": 3,
-      "core_area_pixels": 19,
-      "core_history_positions": 3,
-      "core_consistent_measurements": 3,
+      "consistent_measurements": 6,
+      "core_area_pixels": 20,
+      "core_history_positions": 4,
+      "core_consistent_measurements": 6,
       "core_vector_px_per_5min": {
-        "vx": 5.67,
-        "vy": 0.65
+        "vx": 6.09,
+        "vy": 0.43
       },
       "precip_vector_px_per_5min": null,
-      "direction_difference_deg": null
+      "direction_difference_deg": null,
+      "temporal_previous_direction": "V",
+      "temporal_turn_deg": 2.5,
+      "temporal_match_distance_px": 7.2,
+      "temporal_guard_action": "accepted"
     }
   ]
 }
