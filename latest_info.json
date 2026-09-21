@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-09-21T11:46:28.614942+00:00",
-  "latest_radar_utc": "2026-09-21T11:35:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260921-1135-mosaic--.png",
+  "generated_utc": "2026-09-21T11:51:37.099527+00:00",
+  "latest_radar_utc": "2026-09-21T11:40:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260921-1140-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 24546,
-  "strong_core_pixels": 18,
+  "precipitation_pixels": 25376,
+  "strong_core_pixels": 15,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
     "min_red": 170,
@@ -18,10 +18,10 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 10,
-  "motion_arrows": 5,
+  "motion_candidate_components": 12,
+  "motion_arrows": 7,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 5,
+  "motion_precipitation_only_arrows": 7,
   "motion_temporal_guard_suppressed": 0,
   "motion_core_conflict_max_angle_deg": 55.0,
   "motion_temporal_turn_max_angle_deg": 60.0,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 51,
+    "detected": 48,
     "filled": 36,
-    "filled_pixels": 102,
-    "largest_filled_pixels": 21
+    "filled_pixels": 186,
+    "largest_filled_pixels": 67
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 221163,
-    "black_pixels": 48054,
-    "red_pixels": 18783,
+    "white_pixels": 220021,
+    "black_pixels": 48165,
+    "red_pixels": 19814,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 1115,
+      "area_pixels": 1089,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,8 +68,8 @@
         "vy": 4.0
       },
       "center_px": {
-        "x": 198.7,
-        "y": 203.8
+        "x": 201.6,
+        "y": 208.0
       },
       "consistent_measurements": 5,
       "temporal_previous_direction": "JV",
@@ -78,57 +78,25 @@
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 658,
+      "area_pixels": 622,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
-        "vx": 2.0,
+        "vx": 4.0,
         "vy": 2.0
       },
       "center_px": {
-        "x": 259.9,
-        "y": 235.9
+        "x": 542.9,
+        "y": 87.8
       },
       "consistent_measurements": 3,
       "temporal_previous_direction": "JV",
-      "temporal_turn_deg": 11.3,
-      "temporal_match_distance_px": 9.4,
-      "temporal_guard_action": "accepted"
-    },
-    {
-      "area_pixels": 617,
-      "direction": "JV",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 4.0,
-        "vy": 2.0
-      },
-      "center_px": {
-        "x": 540.7,
-        "y": 84.8
-      },
-      "consistent_measurements": 2
-    },
-    {
-      "area_pixels": 431,
-      "direction": "JV",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 4.0,
-        "vy": 4.0
-      },
-      "center_px": {
-        "x": 157.4,
-        "y": 168.2
-      },
-      "consistent_measurements": 5,
-      "temporal_previous_direction": "JV",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 5.9,
+      "temporal_match_distance_px": 3.7,
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 423,
+      "area_pixels": 473,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -136,13 +104,85 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 426.7,
-        "y": 185.6
+        "x": 428.4,
+        "y": 187.1
       },
       "consistent_measurements": 3,
       "temporal_previous_direction": "V",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 2.2,
+      "temporal_match_distance_px": 2.3,
+      "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 424,
+      "direction": "JV",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 4.0,
+        "vy": 4.0
+      },
+      "center_px": {
+        "x": 160.9,
+        "y": 171.7
+      },
+      "consistent_measurements": 5,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 4.9,
+      "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 414,
+      "direction": "JV",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 2.0,
+        "vy": 3.0
+      },
+      "center_px": {
+        "x": 257.1,
+        "y": 246.1
+      },
+      "consistent_measurements": 2,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 11.3,
+      "temporal_match_distance_px": 10.5,
+      "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 386,
+      "direction": "JV",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 4.0,
+        "vy": 4.0
+      },
+      "center_px": {
+        "x": 98.9,
+        "y": 170.7
+      },
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 58.6,
+      "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 296,
+      "direction": "JV",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 4.0,
+        "vy": 4.0
+      },
+      "center_px": {
+        "x": 184.4,
+        "y": 142.4
+      },
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 37.4,
       "temporal_guard_action": "accepted"
     }
   ]
