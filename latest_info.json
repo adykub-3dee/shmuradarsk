@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-21T20:21:32.591822+00:00",
-  "latest_radar_utc": "2026-09-21T20:10:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260921-2010-mosaic--.png",
+  "generated_utc": "2026-09-21T20:26:29.781026+00:00",
+  "latest_radar_utc": "2026-09-21T20:15:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260921-2015-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 18159,
+  "precipitation_pixels": 18958,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,7 +18,7 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 6,
+  "motion_candidate_components": 7,
   "motion_arrows": 4,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 4,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 42,
-    "filled": 35,
-    "filled_pixels": 97,
-    "largest_filled_pixels": 26
+    "detected": 33,
+    "filled": 30,
+    "filled_pixels": 54,
+    "largest_filled_pixels": 6
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,32 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 226449,
-    "black_pixels": 48649,
-    "red_pixels": 12902,
+    "white_pixels": 225992,
+    "black_pixels": 48569,
+    "red_pixels": 13439,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 5398,
-      "direction": "J",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 2.0,
-        "vy": 6.0
-      },
-      "center_px": {
-        "x": 248.5,
-        "y": 91.6
-      },
-      "consistent_measurements": 2,
-      "temporal_previous_direction": "J",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 2.7,
-      "temporal_guard_action": "accepted"
-    },
-    {
-      "area_pixels": 3587,
+      "area_pixels": 3605,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -86,17 +68,17 @@
         "vy": 4.0
       },
       "center_px": {
-        "x": 541.2,
-        "y": 126.7
+        "x": 541.5,
+        "y": 130.6
       },
-      "consistent_measurements": 3,
+      "consistent_measurements": 4,
       "temporal_previous_direction": "JV",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 13.1,
+      "temporal_match_distance_px": 3.9,
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 2249,
+      "area_pixels": 2782,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -104,13 +86,17 @@
         "vy": 6.0
       },
       "center_px": {
-        "x": 77.7,
-        "y": 177.4
+        "x": 79.1,
+        "y": 180.9
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 2,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 3.8,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 821,
+      "area_pixels": 727,
       "direction": "J",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -118,14 +104,28 @@
         "vy": 6.0
       },
       "center_px": {
-        "x": 398.5,
-        "y": 95.0
+        "x": 399.9,
+        "y": 100.7
       },
-      "consistent_measurements": 4,
+      "consistent_measurements": 5,
       "temporal_previous_direction": "J",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 5.4,
+      "temporal_match_distance_px": 5.9,
       "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 436,
+      "direction": "JV",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 2.5,
+        "vy": 4.5
+      },
+      "center_px": {
+        "x": 134.7,
+        "y": 294.8
+      },
+      "consistent_measurements": 2
     }
   ]
 }
