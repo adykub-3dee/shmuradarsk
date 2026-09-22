@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-09-22T15:06:35.851228+00:00",
+  "generated_utc": "2026-09-22T15:11:29.205772+00:00",
   "latest_radar_utc": "2026-09-22T15:00:00+00:00",
   "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260922-1500-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
@@ -71,11 +71,7 @@
         "x": 124.8,
         "y": 163.3
       },
-      "consistent_measurements": 4,
-      "temporal_previous_direction": "J",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 13.2,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 4
     },
     {
       "area_pixels": 1855,
@@ -89,11 +85,7 @@
         "x": 147.5,
         "y": 259.2
       },
-      "consistent_measurements": 5,
-      "temporal_previous_direction": "J",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 4.3,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 5
     },
     {
       "area_pixels": 1345,
@@ -107,11 +99,7 @@
         "x": 194.3,
         "y": 109.5
       },
-      "consistent_measurements": 4,
-      "temporal_previous_direction": "J",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 4.2,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 4
     },
     {
       "area_pixels": 708,
@@ -125,11 +113,7 @@
         "x": 257.5,
         "y": 139.0
       },
-      "consistent_measurements": 5,
-      "temporal_previous_direction": "J",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 3.2,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 5
     },
     {
       "area_pixels": 658,
@@ -143,11 +127,7 @@
         "x": 250.7,
         "y": 58.3
       },
-      "consistent_measurements": 4,
-      "temporal_previous_direction": "J",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 9.8,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 4
     },
     {
       "area_pixels": 418,
@@ -161,11 +141,7 @@
         "x": 391.0,
         "y": 140.1
       },
-      "consistent_measurements": 2,
-      "temporal_previous_direction": "JV",
-      "temporal_turn_deg": 45.0,
-      "temporal_match_distance_px": 3.3,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 2
     },
     {
       "area_pixels": 259,
@@ -179,11 +155,7 @@
         "x": 522.0,
         "y": 120.4
       },
-      "consistent_measurements": 4,
-      "temporal_previous_direction": "JV",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 3.5,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 4
     }
   ]
 }
