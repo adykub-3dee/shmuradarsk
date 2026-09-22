@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-09-22T12:41:34.757829+00:00",
-  "latest_radar_utc": "2026-09-22T12:30:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260922-1230-mosaic--.png",
+  "generated_utc": "2026-09-22T12:46:51.901549+00:00",
+  "latest_radar_utc": "2026-09-22T12:35:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20260922-1235-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 24427,
+  "precipitation_pixels": 24748,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,10 +18,10 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 16,
-  "motion_arrows": 13,
+  "motion_candidate_components": 14,
+  "motion_arrows": 12,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 13,
+  "motion_precipitation_only_arrows": 12,
   "motion_temporal_guard_suppressed": 0,
   "motion_core_conflict_max_angle_deg": 55.0,
   "motion_temporal_turn_max_angle_deg": 60.0,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 56,
-    "filled": 48,
-    "filled_pixels": 253,
-    "largest_filled_pixels": 99
+    "detected": 64,
+    "filled": 56,
+    "filled_pixels": 185,
+    "largest_filled_pixels": 36
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 223020,
-    "black_pixels": 48705,
-    "red_pixels": 16275,
+    "white_pixels": 222587,
+    "black_pixels": 49018,
+    "red_pixels": 16395,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 12138,
+      "area_pixels": 12441,
       "direction": "J",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,13 +68,17 @@
         "vy": 4.0
       },
       "center_px": {
-        "x": 258.0,
-        "y": 125.0
+        "x": 257.0,
+        "y": 126.3
       },
-      "consistent_measurements": 5
+      "consistent_measurements": 5,
+      "temporal_previous_direction": "J",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 1.7,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 1677,
+      "area_pixels": 3236,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -82,13 +86,17 @@
         "vy": 4.0
       },
       "center_px": {
-        "x": 457.9,
-        "y": 93.3
+        "x": 437.1,
+        "y": 84.7
       },
-      "consistent_measurements": 5
+      "consistent_measurements": 5,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 22.5,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 1145,
+      "area_pixels": 1077,
       "direction": "J",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -96,27 +104,17 @@
         "vy": 4.0
       },
       "center_px": {
-        "x": 90.1,
-        "y": 219.3
+        "x": 91.3,
+        "y": 223.6
       },
-      "consistent_measurements": 5
+      "consistent_measurements": 5,
+      "temporal_previous_direction": "J",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 4.5,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 866,
-      "direction": "J",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": -1.0,
-        "vy": 5.0
-      },
-      "center_px": {
-        "x": 192.7,
-        "y": 208.2
-      },
-      "consistent_measurements": 2
-    },
-    {
-      "area_pixels": 713,
+      "area_pixels": 698,
       "direction": "J",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -124,27 +122,17 @@
         "vy": 4.0
       },
       "center_px": {
-        "x": 205.3,
-        "y": 251.7
+        "x": 207.2,
+        "y": 253.4
       },
-      "consistent_measurements": 3
+      "consistent_measurements": 4,
+      "temporal_previous_direction": "J",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 2.5,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 561,
-      "direction": "JV",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 2.0,
-        "vy": 4.0
-      },
-      "center_px": {
-        "x": 85.4,
-        "y": 171.3
-      },
-      "consistent_measurements": 5
-    },
-    {
-      "area_pixels": 521,
+      "area_pixels": 636,
       "direction": "J",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -152,69 +140,17 @@
         "vy": 4.0
       },
       "center_px": {
-        "x": 236.4,
-        "y": 94.1
+        "x": 195.2,
+        "y": 215.8
       },
-      "consistent_measurements": 4
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "J",
+      "temporal_turn_deg": 11.3,
+      "temporal_match_distance_px": 8.0,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 451,
-      "direction": "J",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 0.5,
-        "vy": 2.0
-      },
-      "center_px": {
-        "x": 570.1,
-        "y": 158.5
-      },
-      "consistent_measurements": 4
-    },
-    {
-      "area_pixels": 378,
-      "direction": "JV",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 2.0,
-        "vy": 4.0
-      },
-      "center_px": {
-        "x": 547.2,
-        "y": 194.0
-      },
-      "consistent_measurements": 5
-    },
-    {
-      "area_pixels": 361,
-      "direction": "JV",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 2.0,
-        "vy": 4.0
-      },
-      "center_px": {
-        "x": 537.6,
-        "y": 147.2
-      },
-      "consistent_measurements": 5
-    },
-    {
-      "area_pixels": 303,
-      "direction": "J",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 1.0,
-        "vy": 5.0
-      },
-      "center_px": {
-        "x": 208.8,
-        "y": 105.4
-      },
-      "consistent_measurements": 2
-    },
-    {
-      "area_pixels": 303,
+      "area_pixels": 613,
       "direction": "J",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -222,13 +158,35 @@
         "vy": 4.0
       },
       "center_px": {
-        "x": 127.7,
-        "y": 245.6
+        "x": 541.7,
+        "y": 196.5
       },
-      "consistent_measurements": 5
+      "consistent_measurements": 5,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 26.6,
+      "temporal_match_distance_px": 6.0,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 265,
+      "area_pixels": 570,
+      "direction": "J",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 0.0,
+        "vy": 4.0
+      },
+      "center_px": {
+        "x": 236.2,
+        "y": 101.0
+      },
+      "consistent_measurements": 5,
+      "temporal_previous_direction": "J",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 6.9,
+      "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 551,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -236,10 +194,86 @@
         "vy": 4.0
       },
       "center_px": {
-        "x": 502.4,
-        "y": 116.1
+        "x": 88.2,
+        "y": 178.2
       },
-      "consistent_measurements": 3
+      "consistent_measurements": 5,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 7.5,
+      "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 338,
+      "direction": "JV",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 2.0,
+        "vy": 4.0
+      },
+      "center_px": {
+        "x": 539.3,
+        "y": 149.8
+      },
+      "consistent_measurements": 5,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 3.1,
+      "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 275,
+      "direction": "J",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 0.0,
+        "vy": 4.0
+      },
+      "center_px": {
+        "x": 128.3,
+        "y": 249.9
+      },
+      "consistent_measurements": 5,
+      "temporal_previous_direction": "J",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 4.3,
+      "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 272,
+      "direction": "JV",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 2.0,
+        "vy": 4.0
+      },
+      "center_px": {
+        "x": 503.4,
+        "y": 119.2
+      },
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 3.3,
+      "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 256,
+      "direction": "J",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 0.0,
+        "vy": 4.0
+      },
+      "center_px": {
+        "x": 209.6,
+        "y": 111.3
+      },
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "J",
+      "temporal_turn_deg": 11.3,
+      "temporal_match_distance_px": 5.9,
+      "temporal_guard_action": "accepted"
     }
   ]
 }
