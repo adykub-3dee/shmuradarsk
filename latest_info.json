@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-10-08T17:31:29.533794+00:00",
-  "latest_radar_utc": "2026-10-08T17:20:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261008-1720-mosaic--.png",
+  "generated_utc": "2026-10-08T17:36:31.778213+00:00",
+  "latest_radar_utc": "2026-10-08T17:25:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261008-1725-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 5571,
+  "precipitation_pixels": 5507,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,10 +18,10 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 5,
-  "motion_arrows": 4,
+  "motion_candidate_components": 6,
+  "motion_arrows": 3,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 4,
+  "motion_precipitation_only_arrows": 3,
   "motion_temporal_guard_suppressed": 0,
   "motion_core_conflict_max_angle_deg": 55.0,
   "motion_temporal_turn_max_angle_deg": 60.0,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 13,
-    "filled": 13,
-    "filled_pixels": 30,
-    "largest_filled_pixels": 10
+    "detected": 6,
+    "filled": 5,
+    "filled_pixels": 11,
+    "largest_filled_pixels": 6
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 234957,
-    "black_pixels": 50166,
-    "red_pixels": 2877,
+    "white_pixels": 235131,
+    "black_pixels": 50125,
+    "red_pixels": 2744,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 1883,
+      "area_pixels": 1473,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,17 +68,17 @@
         "vy": -4.0
       },
       "center_px": {
-        "x": 558.7,
-        "y": 114.0
+        "x": 562.0,
+        "y": 113.2
       },
-      "consistent_measurements": 3,
+      "consistent_measurements": 2,
       "temporal_previous_direction": "SV",
-      "temporal_turn_deg": 11.3,
-      "temporal_match_distance_px": 2.9,
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 3.4,
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 708,
+      "area_pixels": 771,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -86,17 +86,17 @@
         "vy": -4.0
       },
       "center_px": {
-        "x": 329.0,
-        "y": 233.1
+        "x": 226.9,
+        "y": 100.5
       },
       "consistent_measurements": 4,
       "temporal_previous_direction": "SV",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 9.3,
+      "temporal_match_distance_px": 6.8,
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 678,
+      "area_pixels": 758,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -104,31 +104,13 @@
         "vy": -4.0
       },
       "center_px": {
-        "x": 221.3,
-        "y": 104.3
+        "x": 332.8,
+        "y": 229.7
       },
-      "consistent_measurements": 3,
+      "consistent_measurements": 5,
       "temporal_previous_direction": "SV",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 5.4,
-      "temporal_guard_action": "accepted"
-    },
-    {
-      "area_pixels": 286,
-      "direction": "SV",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 6.0,
-        "vy": -4.0
-      },
-      "center_px": {
-        "x": 480.7,
-        "y": 133.5
-      },
-      "consistent_measurements": 3,
-      "temporal_previous_direction": "SV",
-      "temporal_turn_deg": 2.3,
-      "temporal_match_distance_px": 3.9,
+      "temporal_match_distance_px": 5.1,
       "temporal_guard_action": "accepted"
     }
   ]
