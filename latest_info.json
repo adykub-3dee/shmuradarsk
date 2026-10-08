@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-10-08T12:21:32.391389+00:00",
-  "latest_radar_utc": "2026-10-08T12:10:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261008-1210-mosaic--.png",
+  "generated_utc": "2026-10-08T12:26:31.300750+00:00",
+  "latest_radar_utc": "2026-10-08T12:15:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261008-1215-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 11138,
+  "precipitation_pixels": 11398,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,10 +18,10 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 7,
-  "motion_arrows": 4,
+  "motion_candidate_components": 6,
+  "motion_arrows": 3,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 4,
+  "motion_precipitation_only_arrows": 3,
   "motion_temporal_guard_suppressed": 0,
   "motion_core_conflict_max_angle_deg": 55.0,
   "motion_temporal_turn_max_angle_deg": 60.0,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 27,
-    "filled": 25,
-    "filled_pixels": 103,
-    "largest_filled_pixels": 31
+    "detected": 18,
+    "filled": 16,
+    "filled_pixels": 75,
+    "largest_filled_pixels": 15
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 231064,
-    "black_pixels": 49777,
-    "red_pixels": 7159,
+    "white_pixels": 230963,
+    "black_pixels": 49687,
+    "red_pixels": 7350,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 6116,
+      "area_pixels": 7695,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,45 +68,17 @@
         "vy": -4.0
       },
       "center_px": {
-        "x": 377.3,
-        "y": 157.2
+        "x": 367.1,
+        "y": 161.6
       },
       "consistent_measurements": 5,
       "temporal_previous_direction": "SV",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 18.6,
+      "temporal_match_distance_px": 11.1,
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 1844,
-      "direction": "SV",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 4.0,
-        "vy": -4.0
-      },
-      "center_px": {
-        "x": 321.6,
-        "y": 193.0
-      },
-      "consistent_measurements": 4
-    },
-    {
-      "area_pixels": 591,
-      "direction": "SV",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 4.0,
-        "vy": -5.0
-      },
-      "center_px": {
-        "x": 277.9,
-        "y": 223.0
-      },
-      "consistent_measurements": 2
-    },
-    {
-      "area_pixels": 344,
+      "area_pixels": 772,
       "direction": "SV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -114,10 +86,32 @@
         "vy": -6.0
       },
       "center_px": {
-        "x": 259.1,
-        "y": 184.3
+        "x": 282.5,
+        "y": 217.7
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "SV",
+      "temporal_turn_deg": 5.0,
+      "temporal_match_distance_px": 7.0,
+      "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 380,
+      "direction": "SV",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 4.0,
+        "vy": -6.0
+      },
+      "center_px": {
+        "x": 262.5,
+        "y": 178.7
+      },
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "SV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 6.6,
+      "temporal_guard_action": "accepted"
     }
   ]
 }
