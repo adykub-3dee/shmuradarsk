@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-10-09T00:26:28.845214+00:00",
-  "latest_radar_utc": "2026-10-09T00:15:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261009-0015-mosaic--.png",
+  "generated_utc": "2026-10-09T00:31:29.518097+00:00",
+  "latest_radar_utc": "2026-10-09T00:20:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261009-0020-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 14711,
+  "precipitation_pixels": 14434,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,7 +18,7 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 4,
+  "motion_candidate_components": 5,
   "motion_arrows": 3,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 2,
@@ -40,9 +40,9 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 42,
-    "filled": 37,
-    "filled_pixels": 120,
+    "detected": 39,
+    "filled": 35,
+    "filled_pixels": 107,
     "largest_filled_pixels": 22
   },
   "core_motion_history_frames": 5,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 228179,
-    "black_pixels": 49052,
-    "red_pixels": 10769,
+    "white_pixels": 228331,
+    "black_pixels": 49239,
+    "red_pixels": 10430,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 1852,
+      "area_pixels": 2053,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,17 +68,17 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 213.0,
-        "y": 227.0
+        "x": 215.8,
+        "y": 232.3
       },
       "consistent_measurements": 4,
       "temporal_previous_direction": "JV",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 11.5,
+      "temporal_match_distance_px": 6.0,
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 579,
+      "area_pixels": 565,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -86,44 +86,44 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 212.8,
-        "y": 187.2
+        "x": 216.5,
+        "y": 187.4
       },
-      "consistent_measurements": 4
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 3.7,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 10587,
+      "area_pixels": 10301,
       "direction": "V",
       "motion_source": "front_fallback",
       "movement_vector_px_per_5min": {
-        "vx": 4.0,
+        "vx": 6.0,
         "vy": 0.0
       },
       "center_px": {
-        "x": 339.3,
-        "y": 99.1
+        "x": 342.0,
+        "y": 99.6
       },
-      "consistent_measurements": 4,
+      "consistent_measurements": 3,
       "temporal_previous_direction": "V",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 2.7,
+      "temporal_match_distance_px": 2.8,
       "temporal_guard_action": "accepted",
-      "front_total_pixels": 14711,
-      "front_area_share": 0.72,
+      "front_total_pixels": 14434,
+      "front_area_share": 0.714,
       "front_history_frames": 5,
-      "front_phase_samples": 4,
+      "front_phase_samples": 3,
       "front_direction_consensus": 1.0,
-      "front_phase_confidence": 2.667,
-      "front_long_baseline_vector_px_per_5min": {
-        "vx": 3.5,
-        "vy": 0.0
-      },
+      "front_phase_confidence": 2.43,
+      "front_long_baseline_vector_px_per_5min": null,
       "front_centroid_vector_px_per_5min": {
-        "vx": 1.53,
-        "vy": -0.82
+        "vx": 2.37,
+        "vy": -1.34
       },
       "front_confirmations": [
-        "long_baseline_phase",
         "centroid_trend"
       ]
     }
