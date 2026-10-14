@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-10-14T10:31:29.934516+00:00",
-  "latest_radar_utc": "2026-10-14T10:20:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261014-1020-mosaic--.png",
+  "generated_utc": "2026-10-14T10:36:33.750370+00:00",
+  "latest_radar_utc": "2026-10-14T10:25:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261014-1025-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 6280,
+  "precipitation_pixels": 6103,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -12,13 +12,13 @@
     "max_green": 130,
     "min_red_green_margin": 55
   },
-  "motion_method": "per_component_phase_correlation_consistent",
+  "motion_method": "per_component_phase_correlation_partial",
   "filter_min_component_pixels": 60,
   "filter_temporal_confirmation": "2/3",
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 4,
+  "motion_candidate_components": 5,
   "motion_arrows": 4,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 4,
@@ -40,9 +40,9 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 7,
-    "filled": 6,
-    "filled_pixels": 16,
+    "detected": 8,
+    "filled": 7,
+    "filled_pixels": 23,
     "largest_filled_pixels": 9
   },
   "core_motion_history_frames": 5,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 234030,
-    "black_pixels": 50009,
-    "red_pixels": 3961,
+    "white_pixels": 234285,
+    "black_pixels": 49954,
+    "red_pixels": 3761,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 4044,
+      "area_pixels": 2962,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,13 +68,17 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 332.3,
-        "y": 106.5
+        "x": 322.4,
+        "y": 112.9
       },
-      "consistent_measurements": 5
+      "consistent_measurements": 5,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 11.8,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 636,
+      "area_pixels": 685,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -82,13 +86,17 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 283.0,
-        "y": 190.4
+        "x": 285.9,
+        "y": 191.2
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 3.0,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 529,
+      "area_pixels": 557,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -96,13 +104,17 @@
         "vy": 4.0
       },
       "center_px": {
-        "x": 259.6,
-        "y": 244.9
+        "x": 261.9,
+        "y": 243.7
       },
-      "consistent_measurements": 5
+      "consistent_measurements": 5,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 2.6,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 291,
+      "area_pixels": 266,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -110,10 +122,14 @@
         "vy": 4.0
       },
       "center_px": {
-        "x": 242.8,
-        "y": 303.7
+        "x": 245.5,
+        "y": 305.8
       },
-      "consistent_measurements": 3
+      "consistent_measurements": 2,
+      "temporal_previous_direction": "JV",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 3.5,
+      "temporal_guard_action": "accepted"
     }
   ]
 }
