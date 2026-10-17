@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-10-17T18:36:36.916598+00:00",
+  "generated_utc": "2026-10-17T18:41:26.897209+00:00",
   "latest_radar_utc": "2026-10-17T18:30:00+00:00",
   "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261017-1830-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 6634,
+  "precipitation_pixels": 6770,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,7 +18,7 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 2,
+  "motion_candidate_components": 1,
   "motion_arrows": 1,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 0,
@@ -42,7 +42,7 @@
     "max_height": 16,
     "detected": 14,
     "filled": 14,
-    "filled_pixels": 27,
+    "filled_pixels": 34,
     "largest_filled_pixels": 9
   },
   "core_motion_history_frames": 5,
@@ -53,41 +53,37 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 233260,
-    "black_pixels": 49228,
-    "red_pixels": 5512,
+    "white_pixels": 233085,
+    "black_pixels": 49254,
+    "red_pixels": 5661,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 6333,
+      "area_pixels": 6465,
       "direction": "JZ",
       "motion_source": "front_fallback",
       "movement_vector_px_per_5min": {
         "vx": -2.0,
-        "vy": 3.0
+        "vy": 2.0
       },
       "center_px": {
-        "x": 529.1,
-        "y": 161.3
+        "x": 527.5,
+        "y": 163.0
       },
-      "consistent_measurements": 4,
-      "front_total_pixels": 6634,
+      "consistent_measurements": 3,
+      "front_total_pixels": 6770,
       "front_area_share": 0.955,
       "front_history_frames": 5,
-      "front_phase_samples": 4,
+      "front_phase_samples": 3,
       "front_direction_consensus": 1.0,
-      "front_phase_confidence": 1.12,
-      "front_long_baseline_vector_px_per_5min": {
-        "vx": -0.5,
-        "vy": 4.5
-      },
+      "front_phase_confidence": 1.464,
+      "front_long_baseline_vector_px_per_5min": null,
       "front_centroid_vector_px_per_5min": {
-        "vx": 0.36,
-        "vy": 2.66
+        "vx": 0.13,
+        "vy": 2.73
       },
       "front_confirmations": [
-        "long_baseline_phase",
         "centroid_trend"
       ]
     }
