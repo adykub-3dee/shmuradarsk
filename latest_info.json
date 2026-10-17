@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-10-17T20:56:30.437684+00:00",
-  "latest_radar_utc": "2026-10-17T20:45:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261017-2045-mosaic--.png",
+  "generated_utc": "2026-10-17T21:01:26.265543+00:00",
+  "latest_radar_utc": "2026-10-17T20:50:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261017-2050-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 5195,
+  "precipitation_pixels": 5247,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -40,8 +40,8 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 15,
-    "filled": 14,
+    "detected": 13,
+    "filled": 13,
     "filled_pixels": 33,
     "largest_filled_pixels": 9
   },
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 234546,
-    "black_pixels": 49351,
-    "red_pixels": 4103,
+    "white_pixels": 234521,
+    "black_pixels": 49287,
+    "red_pixels": 4192,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 5135,
+      "area_pixels": 4948,
       "direction": "JZ",
       "motion_source": "front_fallback",
       "movement_vector_px_per_5min": {
@@ -68,20 +68,24 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 533.5,
-        "y": 142.4
+        "x": 534.8,
+        "y": 146.9
       },
       "consistent_measurements": 2,
-      "front_total_pixels": 5195,
-      "front_area_share": 0.988,
+      "temporal_previous_direction": "JZ",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 4.7,
+      "temporal_guard_action": "accepted",
+      "front_total_pixels": 5247,
+      "front_area_share": 0.943,
       "front_history_frames": 5,
       "front_phase_samples": 2,
       "front_direction_consensus": 1.0,
-      "front_phase_confidence": 1.262,
+      "front_phase_confidence": 1.215,
       "front_long_baseline_vector_px_per_5min": null,
       "front_centroid_vector_px_per_5min": {
-        "vx": -0.51,
-        "vy": 0.81
+        "vx": -0.28,
+        "vy": 1.21
       },
       "front_confirmations": [
         "centroid_trend"
