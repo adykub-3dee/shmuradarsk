@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-10-18T04:41:27.441537+00:00",
-  "latest_radar_utc": "2026-10-18T04:30:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261018-0430-mosaic--.png",
+  "generated_utc": "2026-10-18T04:46:28.563645+00:00",
+  "latest_radar_utc": "2026-10-18T04:35:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261018-0435-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 6013,
+  "precipitation_pixels": 6619,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,10 +18,10 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 4,
-  "motion_arrows": 3,
+  "motion_candidate_components": 3,
+  "motion_arrows": 2,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 2,
+  "motion_precipitation_only_arrows": 1,
   "motion_temporal_guard_suppressed": 0,
   "motion_core_conflict_max_angle_deg": 55.0,
   "motion_temporal_turn_max_angle_deg": 60.0,
@@ -40,9 +40,9 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 14,
-    "filled": 10,
-    "filled_pixels": 21,
+    "detected": 12,
+    "filled": 8,
+    "filled_pixels": 18,
     "largest_filled_pixels": 9
   },
   "core_motion_history_frames": 5,
@@ -53,32 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 234698,
-    "black_pixels": 49410,
-    "red_pixels": 3892,
+    "white_pixels": 234519,
+    "black_pixels": 49280,
+    "red_pixels": 4201,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 773,
-      "direction": "JZ",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": -2.0,
-        "vy": 4.0
-      },
-      "center_px": {
-        "x": 440.9,
-        "y": 159.1
-      },
-      "consistent_measurements": 3,
-      "temporal_previous_direction": "JZ",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 9.1,
-      "temporal_guard_action": "accepted"
-    },
-    {
-      "area_pixels": 741,
+      "area_pixels": 714,
       "direction": "JZ",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -86,41 +68,45 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 489.4,
-        "y": 85.4
+        "x": 441.2,
+        "y": 164.8
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 2,
+      "temporal_previous_direction": "JZ",
+      "temporal_turn_deg": 18.4,
+      "temporal_match_distance_px": 5.7,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 3715,
+      "area_pixels": 4149,
       "direction": "J",
       "motion_source": "front_fallback",
       "movement_vector_px_per_5min": {
         "vx": 0.0,
-        "vy": 2.0
+        "vy": 4.0
       },
       "center_px": {
-        "x": 546.4,
-        "y": 159.3
+        "x": 545.0,
+        "y": 149.9
       },
-      "consistent_measurements": 4,
+      "consistent_measurements": 3,
       "temporal_previous_direction": "J",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 2.4,
+      "temporal_match_distance_px": 9.5,
       "temporal_guard_action": "accepted",
-      "front_total_pixels": 6013,
-      "front_area_share": 0.618,
+      "front_total_pixels": 6619,
+      "front_area_share": 0.627,
       "front_history_frames": 5,
-      "front_phase_samples": 4,
+      "front_phase_samples": 3,
       "front_direction_consensus": 1.0,
-      "front_phase_confidence": 3.092,
+      "front_phase_confidence": 3.244,
       "front_long_baseline_vector_px_per_5min": {
         "vx": 0.0,
-        "vy": 5.5
+        "vy": 6.0
       },
       "front_centroid_vector_px_per_5min": {
-        "vx": -0.52,
-        "vy": 1.19
+        "vx": 0.01,
+        "vy": 0.92
       },
       "front_confirmations": [
         "long_baseline_phase",
