@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-22T18:53:24.208780+00:00",
+  "generated_utc": "2026-10-22T18:58:13.889340+00:00",
   "latest_radar_utc": "2026-10-22T18:45:00+00:00",
   "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261022-1845-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
@@ -71,11 +71,7 @@
         "x": 470.1,
         "y": 178.4
       },
-      "consistent_measurements": 5,
-      "temporal_previous_direction": "V",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 2.9,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 5
     },
     {
       "area_pixels": 461,
@@ -89,11 +85,7 @@
         "x": 548.1,
         "y": 106.1
       },
-      "consistent_measurements": 3,
-      "temporal_previous_direction": "V",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 6.3,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 3
     },
     {
       "area_pixels": 398,
@@ -107,11 +99,7 @@
         "x": 510.0,
         "y": 143.6
       },
-      "consistent_measurements": 3,
-      "temporal_previous_direction": "SV",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 2.4,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 3
     },
     {
       "area_pixels": 396,
@@ -125,11 +113,7 @@
         "x": 495.3,
         "y": 206.1
       },
-      "consistent_measurements": 3,
-      "temporal_previous_direction": "V",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 1.6,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 3
     }
   ]
 }
