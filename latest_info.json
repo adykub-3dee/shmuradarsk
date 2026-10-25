@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-10-25T20:58:24.612061+00:00",
-  "latest_radar_utc": "2026-10-25T20:50:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261025-2050-mosaic--.png",
+  "generated_utc": "2026-10-25T21:03:24.032673+00:00",
+  "latest_radar_utc": "2026-10-25T20:55:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261025-2055-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 75888,
-  "strong_core_pixels": 171,
+  "precipitation_pixels": 77066,
+  "strong_core_pixels": 231,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
     "min_red": 170,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 272,
-    "filled": 217,
-    "filled_pixels": 651,
-    "largest_filled_pixels": 32
+    "detected": 280,
+    "filled": 219,
+    "filled_pixels": 717,
+    "largest_filled_pixels": 41
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,37 +53,37 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 174878,
-    "black_pixels": 40500,
-    "red_pixels": 72622,
+    "white_pixels": 173667,
+    "black_pixels": 40367,
+    "red_pixels": 73966,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 75465,
+      "area_pixels": 76658,
       "direction": "V",
       "motion_source": "strong_core",
       "movement_vector_px_per_5min": {
-        "vx": 6.33,
-        "vy": 0.66
+        "vx": 6.44,
+        "vy": 0.52
       },
       "center_px": {
-        "x": 113.6,
-        "y": 257.0
+        "x": 121.3,
+        "y": 258.6
       },
-      "consistent_measurements": 8,
-      "core_area_pixels": 112,
+      "consistent_measurements": 10,
+      "core_area_pixels": 153,
       "core_history_positions": 5,
-      "core_consistent_measurements": 8,
+      "core_consistent_measurements": 10,
       "core_vector_px_per_5min": {
-        "vx": 6.33,
-        "vy": 0.66
+        "vx": 6.44,
+        "vy": 0.52
       },
       "precip_vector_px_per_5min": null,
       "direction_difference_deg": null,
       "temporal_previous_direction": "V",
-      "temporal_turn_deg": 11.4,
-      "temporal_match_distance_px": 12.9,
+      "temporal_turn_deg": 1.3,
+      "temporal_match_distance_px": 7.9,
       "temporal_guard_action": "accepted"
     }
   ]
