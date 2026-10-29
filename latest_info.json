@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-10-29T21:23:14.118708+00:00",
-  "latest_radar_utc": "2026-10-29T21:15:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261029-2115-mosaic--.png",
+  "generated_utc": "2026-10-29T21:28:18.811772+00:00",
+  "latest_radar_utc": "2026-10-29T21:20:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261029-2120-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 1918,
+  "precipitation_pixels": 1849,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 2,
+    "detected": 3,
     "filled": 2,
-    "filled_pixels": 17,
-    "largest_filled_pixels": 13
+    "filled_pixels": 2,
+    "largest_filled_pixels": 1
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 236761,
-    "black_pixels": 50180,
-    "red_pixels": 1059,
+    "white_pixels": 236815,
+    "black_pixels": 50197,
+    "red_pixels": 988,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 399,
+      "area_pixels": 376,
       "direction": "JZ",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,13 +68,17 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 387.6,
-        "y": 90.1
+        "x": 385.6,
+        "y": 90.9
       },
-      "consistent_measurements": 3
+      "consistent_measurements": 4,
+      "temporal_previous_direction": "JZ",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 2.1,
+      "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 352,
+      "area_pixels": 251,
       "direction": "JZ",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -82,10 +86,14 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 357.2,
-        "y": 86.0
+        "x": 357.9,
+        "y": 87.5
       },
-      "consistent_measurements": 2
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "JZ",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 1.6,
+      "temporal_guard_action": "accepted"
     }
   ]
 }
