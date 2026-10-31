@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-10-31T22:13:19.703393+00:00",
-  "latest_radar_utc": "2026-10-31T22:05:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261031-2205-mosaic--.png",
+  "generated_utc": "2026-10-31T22:18:20.651426+00:00",
+  "latest_radar_utc": "2026-10-31T22:10:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261031-2210-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 3111,
+  "precipitation_pixels": 3146,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,7 +18,7 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 4,
+  "motion_candidate_components": 5,
   "motion_arrows": 1,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 1,
@@ -41,8 +41,8 @@
     "max_width": 16,
     "max_height": 16,
     "detected": 4,
-    "filled": 4,
-    "filled_pixels": 4,
+    "filled": 3,
+    "filled_pixels": 3,
     "largest_filled_pixels": 1
   },
   "core_motion_history_frames": 5,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 236417,
-    "black_pixels": 49884,
-    "red_pixels": 1699,
+    "white_pixels": 236442,
+    "black_pixels": 49914,
+    "red_pixels": 1644,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 688,
+      "area_pixels": 460,
       "direction": "JZ",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,10 +68,14 @@
         "vy": 2.0
       },
       "center_px": {
-        "x": 138.9,
-        "y": 226.4
+        "x": 133.4,
+        "y": 234.0
       },
-      "consistent_measurements": 3
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "JZ",
+      "temporal_turn_deg": 0.0,
+      "temporal_match_distance_px": 9.4,
+      "temporal_guard_action": "accepted"
     }
   ]
 }
