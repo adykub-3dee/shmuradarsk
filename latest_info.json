@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-10-31T23:58:16.071712+00:00",
-  "latest_radar_utc": "2026-10-31T23:45:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261031-2345-mosaic--.png",
+  "generated_utc": "2026-11-01T00:03:13.184177+00:00",
+  "latest_radar_utc": "2026-10-31T23:55:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261031-2355-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 2958,
+  "precipitation_pixels": 2692,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 4,
-    "filled": 4,
-    "filled_pixels": 9,
-    "largest_filled_pixels": 6
+    "detected": 1,
+    "filled": 1,
+    "filled_pixels": 2,
+    "largest_filled_pixels": 2
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 236287,
-    "black_pixels": 50160,
-    "red_pixels": 1553,
+    "white_pixels": 236460,
+    "black_pixels": 50117,
+    "red_pixels": 1423,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 996,
+      "area_pixels": 739,
       "direction": "Z",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,13 +68,13 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 126.0,
-        "y": 194.8
+        "x": 183.6,
+        "y": 166.6
       },
       "consistent_measurements": 4
     },
     {
-      "area_pixels": 801,
+      "area_pixels": 702,
       "direction": "Z",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -82,10 +82,10 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 187.5,
-        "y": 165.8
+        "x": 123.0,
+        "y": 197.7
       },
-      "consistent_measurements": 3
+      "consistent_measurements": 4
     }
   ]
 }
