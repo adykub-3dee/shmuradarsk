@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-11-01T01:58:13.450617+00:00",
-  "latest_radar_utc": "2026-11-01T01:45:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261101-0145-mosaic--.png",
+  "generated_utc": "2026-11-01T02:03:19.395381+00:00",
+  "latest_radar_utc": "2026-11-01T01:55:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261101-0155-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 4121,
+  "precipitation_pixels": 3967,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -42,8 +42,8 @@
     "max_height": 16,
     "detected": 3,
     "filled": 3,
-    "filled_pixels": 3,
-    "largest_filled_pixels": 1
+    "filled_pixels": 4,
+    "largest_filled_pixels": 2
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 235513,
-    "black_pixels": 49884,
-    "red_pixels": 2603,
+    "white_pixels": 235746,
+    "black_pixels": 49841,
+    "red_pixels": 2413,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 1615,
+      "area_pixels": 1499,
       "direction": "Z",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,24 +68,24 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 156.7,
-        "y": 277.4
-      },
-      "consistent_measurements": 4
-    },
-    {
-      "area_pixels": 1127,
-      "direction": "Z",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": -2.0,
-        "vy": 0.0
-      },
-      "center_px": {
-        "x": 107.6,
-        "y": 240.7
+        "x": 151.3,
+        "y": 277.9
       },
       "consistent_measurements": 5
+    },
+    {
+      "area_pixels": 1120,
+      "direction": "Z",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": -2.0,
+        "vy": 0.0
+      },
+      "center_px": {
+        "x": 103.8,
+        "y": 240.9
+      },
+      "consistent_measurements": 4
     }
   ]
 }
