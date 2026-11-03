@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-11-03T10:33:21.005758+00:00",
-  "latest_radar_utc": "2026-11-03T10:25:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261103-1025-mosaic--.png",
+  "generated_utc": "2026-11-03T10:38:18.854512+00:00",
+  "latest_radar_utc": "2026-11-03T10:30:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261103-1030-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 2400,
+  "precipitation_pixels": 1995,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,7 +18,7 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 3,
+  "motion_candidate_components": 2,
   "motion_arrows": 1,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 1,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 6,
-    "filled": 5,
-    "filled_pixels": 14,
-    "largest_filled_pixels": 5
+    "detected": 4,
+    "filled": 4,
+    "filled_pixels": 6,
+    "largest_filled_pixels": 3
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 236843,
-    "black_pixels": 49718,
-    "red_pixels": 1439,
+    "white_pixels": 237133,
+    "black_pixels": 49769,
+    "red_pixels": 1098,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 355,
+      "area_pixels": 712,
       "direction": "Z",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,14 +68,10 @@
         "vy": 0.0
       },
       "center_px": {
-        "x": 242.6,
-        "y": 193.3
+        "x": 103.2,
+        "y": 150.8
       },
-      "consistent_measurements": 2,
-      "temporal_previous_direction": "Z",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 2.0,
-      "temporal_guard_action": "accepted"
+      "consistent_measurements": 2
     }
   ]
 }
