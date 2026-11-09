@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-11-09T08:58:17.810118+00:00",
-  "latest_radar_utc": "2026-11-09T08:50:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261109-0850-mosaic--.png",
+  "generated_utc": "2026-11-09T09:03:12.903772+00:00",
+  "latest_radar_utc": "2026-11-09T08:55:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261109-0855-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 3214,
+  "precipitation_pixels": 2783,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -12,16 +12,16 @@
     "max_green": 130,
     "min_red_green_margin": 55
   },
-  "motion_method": "component_motion_not_reliable",
+  "motion_method": "per_component_phase_correlation_partial",
   "filter_min_component_pixels": 60,
   "filter_temporal_confirmation": "2/3",
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
   "motion_candidate_components": 2,
-  "motion_arrows": 0,
+  "motion_arrows": 1,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 0,
+  "motion_precipitation_only_arrows": 1,
   "motion_temporal_guard_suppressed": 0,
   "motion_core_conflict_max_angle_deg": 55.0,
   "motion_temporal_turn_max_angle_deg": 60.0,
@@ -41,8 +41,8 @@
     "max_width": 16,
     "max_height": 16,
     "detected": 3,
-    "filled": 2,
-    "filled_pixels": 4,
+    "filled": 1,
+    "filled_pixels": 3,
     "largest_filled_pixels": 3
   },
   "core_motion_history_frames": 5,
@@ -53,9 +53,25 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 236469,
-    "black_pixels": 49295,
-    "red_pixels": 2236,
+    "white_pixels": 236735,
+    "black_pixels": 49418,
+    "red_pixels": 1847,
     "other_pixels": 0
-  }
+  },
+  "movement_components": [
+    {
+      "area_pixels": 837,
+      "direction": "S",
+      "motion_source": "precipitation",
+      "movement_vector_px_per_5min": {
+        "vx": 0.0,
+        "vy": -2.0
+      },
+      "center_px": {
+        "x": 239.6,
+        "y": 226.1
+      },
+      "consistent_measurements": 2
+    }
+  ]
 }
