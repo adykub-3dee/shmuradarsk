@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-11-10T11:18:24.501405+00:00",
-  "latest_radar_utc": "2026-11-10T11:05:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261110-1105-mosaic--.png",
+  "generated_utc": "2026-11-10T11:23:18.802878+00:00",
+  "latest_radar_utc": "2026-11-10T11:10:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261110-1110-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 31680,
+  "precipitation_pixels": 33043,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,10 +18,10 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 6,
-  "motion_arrows": 3,
+  "motion_candidate_components": 5,
+  "motion_arrows": 2,
   "motion_core_guided_arrows": 0,
-  "motion_precipitation_only_arrows": 2,
+  "motion_precipitation_only_arrows": 1,
   "motion_temporal_guard_suppressed": 0,
   "motion_core_conflict_max_angle_deg": 55.0,
   "motion_temporal_turn_max_angle_deg": 60.0,
@@ -40,9 +40,9 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 65,
-    "filled": 47,
-    "filled_pixels": 147,
+    "detected": 70,
+    "filled": 52,
+    "filled_pixels": 178,
     "largest_filled_pixels": 14
   },
   "core_motion_history_frames": 5,
@@ -53,46 +53,32 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 213495,
-    "black_pixels": 46985,
-    "red_pixels": 27520,
+    "white_pixels": 212221,
+    "black_pixels": 46898,
+    "red_pixels": 28881,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 482,
+      "area_pixels": 618,
       "direction": "V",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
-        "vx": 5.0,
+        "vx": 6.0,
         "vy": -2.0
       },
       "center_px": {
-        "x": 325.6,
-        "y": 146.6
+        "x": 335.6,
+        "y": 109.1
       },
-      "consistent_measurements": 4,
+      "consistent_measurements": 3,
       "temporal_previous_direction": "V",
       "temporal_turn_deg": 3.4,
-      "temporal_match_distance_px": 4.5,
+      "temporal_match_distance_px": 38.8,
       "temporal_guard_action": "accepted"
     },
     {
-      "area_pixels": 386,
-      "direction": "V",
-      "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 5.0,
-        "vy": 0.0
-      },
-      "center_px": {
-        "x": 99.3,
-        "y": 146.1
-      },
-      "consistent_measurements": 2
-    },
-    {
-      "area_pixels": 23420,
+      "area_pixels": 23808,
       "direction": "V",
       "motion_source": "large_front_animation",
       "movement_vector_px_per_5min": {
@@ -100,19 +86,19 @@
         "vy": -2.0
       },
       "center_px": {
-        "x": 218.9,
-        "y": 231.1
+        "x": 223.8,
+        "y": 229.3
       },
-      "consistent_measurements": 51,
+      "consistent_measurements": 52,
       "temporal_previous_direction": "V",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 21.5,
+      "temporal_match_distance_px": 5.2,
       "temporal_guard_action": "accepted",
-      "animation_map_share": 0.112,
-      "animation_total_vectors": 65,
-      "animation_agreeing_vectors": 51,
-      "animation_direction_consensus": 0.785,
-      "animation_phase_confidence": 1.37,
+      "animation_map_share": 0.113,
+      "animation_total_vectors": 63,
+      "animation_agreeing_vectors": 52,
+      "animation_direction_consensus": 0.825,
+      "animation_phase_confidence": 1.304,
       "animation_frame_pairs": 5,
       "animation_spatial_tiles": 20,
       "animation_global_rgb_vector_px_per_5min": null,
@@ -121,8 +107,8 @@
         "vy": 0.0
       },
       "animation_centroid_vector_px_per_5min": {
-        "vx": 3.15,
-        "vy": -1.99
+        "vx": 3.17,
+        "vy": -2.29
       },
       "animation_confirmations": [
         "binary_long_baseline",
