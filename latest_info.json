@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-11-17T18:48:18.560245+00:00",
-  "latest_radar_utc": "2026-11-17T18:35:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261117-1835-mosaic--.png",
+  "generated_utc": "2026-11-17T18:53:21.218039+00:00",
+  "latest_radar_utc": "2026-11-17T18:45:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261117-1845-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 59954,
+  "precipitation_pixels": 56866,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,7 +18,7 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 2,
+  "motion_candidate_components": 4,
   "motion_arrows": 1,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 0,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 181,
-    "filled": 133,
-    "filled_pixels": 579,
-    "largest_filled_pixels": 44
+    "detected": 153,
+    "filled": 120,
+    "filled_pixels": 454,
+    "largest_filled_pixels": 63
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,43 +53,44 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 190291,
-    "black_pixels": 42691,
-    "red_pixels": 55018,
+    "white_pixels": 192688,
+    "black_pixels": 43342,
+    "red_pixels": 51970,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 47595,
+      "area_pixels": 45781,
       "direction": "V",
       "motion_source": "large_front_animation",
       "movement_vector_px_per_5min": {
         "vx": 8.0,
-        "vy": 2.0
+        "vy": 1.0
       },
       "center_px": {
-        "x": 255.3,
-        "y": 163.5
+        "x": 264.2,
+        "y": 156.4
       },
-      "consistent_measurements": 73,
-      "animation_map_share": 0.227,
-      "animation_total_vectors": 97,
-      "animation_agreeing_vectors": 73,
-      "animation_direction_consensus": 0.753,
-      "animation_phase_confidence": 1.463,
+      "consistent_measurements": 83,
+      "animation_map_share": 0.218,
+      "animation_total_vectors": 113,
+      "animation_agreeing_vectors": 83,
+      "animation_direction_consensus": 0.735,
+      "animation_phase_confidence": 1.425,
       "animation_frame_pairs": 5,
-      "animation_spatial_tiles": 24,
+      "animation_spatial_tiles": 30,
       "animation_global_rgb_vector_px_per_5min": null,
       "animation_binary_long_vector_px_per_5min": {
         "vx": 0.0,
         "vy": 0.0
       },
       "animation_centroid_vector_px_per_5min": {
-        "vx": -1.93,
-        "vy": 0.2
+        "vx": 1.75,
+        "vy": -1.23
       },
       "animation_confirmations": [
-        "binary_long_baseline"
+        "binary_long_baseline",
+        "centroid_trend"
       ]
     }
   ]
