@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-11-17T19:48:24.253075+00:00",
-  "latest_radar_utc": "2026-11-17T19:40:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261117-1940-mosaic--.png",
+  "generated_utc": "2026-11-17T19:53:18.430962+00:00",
+  "latest_radar_utc": "2026-11-17T19:45:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261117-1945-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 47295,
-  "strong_core_pixels": 0,
+  "precipitation_pixels": 47057,
+  "strong_core_pixels": 41,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
     "min_red": 170,
@@ -18,7 +18,7 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 5,
+  "motion_candidate_components": 3,
   "motion_arrows": 2,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 1,
@@ -40,10 +40,10 @@
     "max_pixels": 144,
     "max_width": 16,
     "max_height": 16,
-    "detected": 136,
-    "filled": 104,
-    "filled_pixels": 486,
-    "largest_filled_pixels": 77
+    "detected": 160,
+    "filled": 125,
+    "filled_pixels": 785,
+    "largest_filled_pixels": 135
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,59 +53,62 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 202050,
-    "black_pixels": 43846,
-    "red_pixels": 42104,
+    "white_pixels": 201230,
+    "black_pixels": 44188,
+    "red_pixels": 42582,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 404,
+      "area_pixels": 473,
       "direction": "V",
       "motion_source": "precipitation",
-      "movement_vector_px_per_5min": {
-        "vx": 8.0,
-        "vy": 3.0
-      },
-      "center_px": {
-        "x": 98.4,
-        "y": 270.4
-      },
-      "consistent_measurements": 2,
-      "temporal_previous_direction": "V",
-      "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 5.8,
-      "temporal_guard_action": "accepted"
-    },
-    {
-      "area_pixels": 45031,
-      "direction": "V",
-      "motion_source": "large_front_animation",
       "movement_vector_px_per_5min": {
         "vx": 8.0,
         "vy": 2.0
       },
       "center_px": {
-        "x": 348.2,
-        "y": 138.2
+        "x": 105.8,
+        "y": 273.4
+      },
+      "consistent_measurements": 3,
+      "temporal_previous_direction": "V",
+      "temporal_turn_deg": 6.5,
+      "temporal_match_distance_px": 8.0,
+      "temporal_guard_action": "accepted"
+    },
+    {
+      "area_pixels": 45984,
+      "direction": "V",
+      "motion_source": "large_front_animation",
+      "movement_vector_px_per_5min": {
+        "vx": 8.0,
+        "vy": 1.0
+      },
+      "center_px": {
+        "x": 359.4,
+        "y": 138.8
       },
       "consistent_measurements": 70,
       "temporal_previous_direction": "V",
       "temporal_turn_deg": 6.9,
-      "temporal_match_distance_px": 3.1,
+      "temporal_match_distance_px": 11.2,
       "temporal_guard_action": "accepted",
-      "animation_map_share": 0.214,
-      "animation_total_vectors": 82,
+      "animation_map_share": 0.219,
+      "animation_total_vectors": 79,
       "animation_agreeing_vectors": 70,
-      "animation_direction_consensus": 0.854,
-      "animation_phase_confidence": 1.477,
+      "animation_direction_consensus": 0.886,
+      "animation_phase_confidence": 1.447,
       "animation_frame_pairs": 5,
-      "animation_spatial_tiles": 25,
+      "animation_spatial_tiles": 29,
       "animation_global_rgb_vector_px_per_5min": null,
-      "animation_binary_long_vector_px_per_5min": null,
+      "animation_binary_long_vector_px_per_5min": {
+        "vx": 0.0,
+        "vy": 6.4
+      },
       "animation_centroid_vector_px_per_5min": {
-        "vx": 3.79,
-        "vy": -1.45
+        "vx": 4.46,
+        "vy": -1.34
       },
       "animation_confirmations": [
         "centroid_trend"
