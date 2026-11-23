@@ -1,10 +1,10 @@
 {
-  "generated_utc": "2026-11-23T18:53:13.580598+00:00",
-  "latest_radar_utc": "2026-11-23T18:45:00+00:00",
-  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261123-1845-mosaic--.png",
+  "generated_utc": "2026-11-23T18:58:18.993629+00:00",
+  "latest_radar_utc": "2026-11-23T18:50:00+00:00",
+  "source_url": "https://www.shmu.sk/data/data002/radar-cappi_z_2_600x480-20261123-1850-mosaic--.png",
   "mode": "fixed_basemap_overlay_v1",
   "base_map": "base_map.png",
-  "precipitation_pixels": 4011,
+  "precipitation_pixels": 3735,
   "strong_core_pixels": 0,
   "strong_core_enabled": true,
   "strong_core_rgb_threshold": {
@@ -18,7 +18,7 @@
   "motion_scope": "per_connected_component",
   "motion_min_component_pixels": 250,
   "motion_min_precip_pixels": 250,
-  "motion_candidate_components": 6,
+  "motion_candidate_components": 5,
   "motion_arrows": 1,
   "motion_core_guided_arrows": 0,
   "motion_precipitation_only_arrows": 1,
@@ -42,8 +42,8 @@
     "max_height": 16,
     "detected": 8,
     "filled": 8,
-    "filled_pixels": 17,
-    "largest_filled_pixels": 7
+    "filled_pixels": 27,
+    "largest_filled_pixels": 9
   },
   "core_motion_history_frames": 5,
   "core_motion_min_positions": 3,
@@ -53,14 +53,14 @@
     "#FF0000"
   ],
   "palette_stats": {
-    "white_pixels": 236173,
-    "black_pixels": 49754,
-    "red_pixels": 2073,
+    "white_pixels": 236309,
+    "black_pixels": 49811,
+    "red_pixels": 1880,
     "other_pixels": 0
   },
   "movement_components": [
     {
-      "area_pixels": 442,
+      "area_pixels": 343,
       "direction": "JV",
       "motion_source": "precipitation",
       "movement_vector_px_per_5min": {
@@ -68,13 +68,13 @@
         "vy": 4.0
       },
       "center_px": {
-        "x": 282.7,
-        "y": 129.9
+        "x": 285.4,
+        "y": 131.6
       },
-      "consistent_measurements": 3,
+      "consistent_measurements": 4,
       "temporal_previous_direction": "JV",
       "temporal_turn_deg": 0.0,
-      "temporal_match_distance_px": 0.7,
+      "temporal_match_distance_px": 3.2,
       "temporal_guard_action": "accepted"
     }
   ]
